@@ -1,0 +1,11 @@
+#!/usr/bin/zsh
+xclipInstalled=$(dpkg-query -W -f='${Status}' xclip2 2>/dev/null | grep -c "ok installed")
+if [ $xclipInstalled -eq 0 ];
+then
+  echo 'needs xclip to run. use "apt-get install xclip"'
+  return
+fi
+
+filePath=$(readlink -f $1)
+echo copied: $filePath
+echo $filePath | head -c -1 | xclip -selection clipboard
