@@ -1,4 +1,11 @@
+#basic alias
+alias l='ls -lh'
+alias ll='ls -lah'
+
+# tldr color scheme
 alias tldr='tldr -t ocean'
+
+# Use vim, not vi
 alias vi=vim
 
 # Docker
