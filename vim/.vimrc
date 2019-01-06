@@ -1,8 +1,14 @@
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 
+" Auto-source vimrc on save
+autocmd! bufwritepost .vimrc source %
+
 "change leader to space
 let mapleader = " "
+
+
+" ================ Vim-Plug ===========================
 
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -22,6 +28,10 @@ call plug#begin('~/.vim/plugged')
 
   " Python
   Plug 'vim-scripts/indentpython.vim'
+
+  " Git
+  Plug 'airblade/vim-gitgutter'		"git diff in the 'gutter'
+  Plug 'tpope/vim-fugitive'		    " Git wrapper.
 
   " Colors
   Plug 'tomasr/molokai'
@@ -67,7 +77,8 @@ let g:fzf_colors =
 
 
 nnoremap <silent> <Leader>C        :Colors<CR>
-nnoremap <silent> <Leader><Enter>  :Buffers<CR>
+nnoremap <silent> <Leader><Enter>  :Files<CR>
+nnoremap <silent> <Leader>b        :Buffers<CR>
 nnoremap <silent> <Leader>L        :Lines<CR>
 nnoremap <silent> <Leader>ag       :Ag <C-R><C-W><CR>
 nnoremap <silent> <Leader>AG       :Ag <C-R><C-A><CR>
@@ -76,6 +87,7 @@ nnoremap <silent> <Leader>m        :Marks<CR>
 " ================ Misc ==============
 
 syntax on                       " Turn on syntax highlighting
+set nowrap                      " No wrap
 set number relativenumber       " Both numbered lines and relative numbers
 set backspace=indent,eol,start  " Allow backspace in insert mode
 set history=1000                " Store lots of :cmdline history
@@ -83,17 +95,18 @@ set showcmd                     " Show incomplete cmds down the bottom
 set showmode                    " Show current mode down the bottom
 set gcr=a:blinkon0              " Disable cursor blink
 set autoread                    " Reload files changed outside vim
-set scrolloff=5                 " Bring search result to the middle of the screen
+set scrolloff=5                 " Margin from top/bottom when scrolling
 set mouse=a                     " Enable mouse support in console
-"set visualbell                 " No sounds
+set colorcolumn=80              " Mark where you should end a line
+set clipboard=unnamed           " Clipboard as default register
 set encoding=utf-8
-let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""' " fzf with hidden files
+
+let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""' " fzf hidden files
 
 " ================ Clipboard ==============
 
 " test if clopboard available with :echo has('clipboard')
 " if you get 0 - install vim-gtk (ubuntu) or gvim (arch)
-set clipboard=unnamed           "Clipboard as default register
 
 " ================ Turn Off Swap Files ==============
 
@@ -111,26 +124,20 @@ set softtabstop=4
 set tabstop=4
 set expandtab
 
-" ================ Folds ============================
-
-set foldmethod=indent   "fold based on indent
-set foldnestmax=3       "deepest fold is 3 levels
-set nofoldenable        "dont fold by default
-
 " ================ Completion =======================
 
-set wildmode=list:longest
-set wildmenu                "enable ctrl-n and ctrl-p to scroll thru matches
-set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
-set wildignore+=*vim/backups*
-set wildignore+=*sass-cache*
-set wildignore+=*DS_Store*
-set wildignore+=vendor/rails/**
-set wildignore+=vendor/cache/**
-set wildignore+=*.gem
-set wildignore+=log/**
-set wildignore+=tmp/**
-set wildignore+=*.png,*.jpg,*.gif
+" set wildmode=list:longest
+" set wildmenu                "enable ctrl-n and ctrl-p to scroll thru matches
+" set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
+" set wildignore+=*vim/backups*
+" set wildignore+=*sass-cache*
+" set wildignore+=*DS_Store*
+" set wildignore+=vendor/rails/**
+" set wildignore+=vendor/cache/**
+" set wildignore+=*.gem
+" set wildignore+=log/**
+" set wildignore+=tmp/**
+" set wildignore+=*.png,*.jpg,*.gif
 
 " ================ Search ===========================
 
@@ -152,16 +159,13 @@ nnoremap <leader>O O<esc>
 " remove highlighting after you are done with the search
 nnoremap <Leader><space> :noh<cr>
 
-" fuzzy find
-nnoremap <C-p> :Files<Cr>
+" Save - if using 'konsole': edit profile->advanced->untick ctrl+s
+inoremap <C-s> <C-O>:update<cr>
+nnoremap <C-s> :update<cr>
 
-" Save
-inoremap <C-s>     <C-O>:update<cr>
-nnoremap <C-s>     :update<cr>
-
-" Quit
-inoremap <C-Q>     <esc>:q<cr>
-nnoremap <C-Q>     :q<cr>
+"Quit - see 'konsole' note above
+nnoremap <leader>q :q<CR>
+nnoremap <leader>Q :qa<CR>
 
 " Movement in insert mode
 inoremap <C-h> <C-o>h
@@ -169,18 +173,22 @@ inoremap <C-l> <C-o>a
 inoremap <C-j> <C-o>j
 inoremap <C-k> <C-o>k
 
-"  split navigations
+" split navigations
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+" tabs nvigation
+nnoremap <leader>l <esc>:tabnext<CR> 
+nnoremap <leader>h <esc>:tabprevious<CR> 
+
 " insert a charecter while staying in normal mode
-nnoremap <C-i> <Esc>r
+nnoremap <C-i> i <Esc>r
 
 " ================ Colors ===========================
 
-colorscheme gruvbox
+colorscheme molokai "gruvbox
 
 
 " <F8> | Rotate Color schemes
