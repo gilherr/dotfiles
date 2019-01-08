@@ -20,20 +20,29 @@ call plug#begin('~/.vim/plugged')
 
   Plug 'scrooloose/nerdtree'        "File Browser
   Plug 'vim-airline/vim-airline'    "Status Line
-  Plug 'morhetz/gruvbox'            "ColorScheme
   Plug 'junegunn/fzf', { 'do': './install --bin' }  "FuzzyFinder
   Plug 'junegunn/fzf.vim'
-  Plug 'tpope/vim-surround'             "surroind stuff
+  Plug 'tpope/vim-surround'             "surroind stuff - cs'[<cr> / yss'
+  Plug 'tpope/vim-commentary'           "usage: gc[motion]
+  Plug 'tpope/vim-markdown'
   Plug 'yuttie/comfortable-motion.vim'  "smooth scrolling
-
+  
+  " Replace With Register - usage: [count]["x]gr{motion}   
+  Plug 'vim-scripts/ReplaceWithRegister'
+  Plug 'vim-scripts/ReplaceWithSameIndentRegister'
+  
   " Python
-  Plug 'vim-scripts/indentpython.vim'
-
+  " Plug 'vim-scripts/indentpython.vim' "forces textwidth=80
+  
+  "JavaScript
+  Plug 'pangloss/vim-javascript'
+  
   " Git
   Plug 'airblade/vim-gitgutter'		"git diff in the 'gutter'
   Plug 'tpope/vim-fugitive'		    " Git wrapper.
-
+  
   " Colors
+  Plug 'jonathanfilip/vim-lucius'
   Plug 'tomasr/molokai'
   Plug 'chriskempson/vim-tomorrow-theme'
   Plug 'morhetz/gruvbox'
@@ -47,7 +56,7 @@ call plug#begin('~/.vim/plugged')
 
 call plug#end()
 
-" ================ Plugs: NERDTREE ===========================
+" ================ Plug: NERDTREE ===========================
 
 "" close vim if only NERDtree left
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
@@ -58,7 +67,7 @@ let g:NERDTreeDirArrows=0
 
 nnoremap <leader>n :NERDTreeToggle<CR>
 
-" ================ Plugs: FZF ===========================
+" ================ Plug: FZF ===========================
 
 let g:fzf_colors =
 \ { 'fg':      ['fg', 'Normal'],
@@ -84,6 +93,11 @@ nnoremap <silent> <Leader>ag       :Ag <C-R><C-W><CR>
 nnoremap <silent> <Leader>AG       :Ag <C-R><C-A><CR>
 nnoremap <silent> <Leader>m        :Marks<CR>
 
+" ================ Plug: replace-with-register ==============
+
+nmap <leader>gr "*gr
+nmap <leader>gR "*gR
+
 " ================ Misc ==============
 
 syntax on                       " Turn on syntax highlighting
@@ -98,6 +112,7 @@ set autoread                    " Reload files changed outside vim
 set scrolloff=5                 " Margin from top/bottom when scrolling
 set mouse=a                     " Enable mouse support in console
 set colorcolumn=80              " Mark where you should end a line
+set textwidth=0                 " dont enforce text width
 set clipboard=unnamed           " Clipboard as default register
 set encoding=utf-8
 
@@ -188,7 +203,7 @@ nnoremap <C-i> i <Esc>r
 
 " ================ Colors ===========================
 
-colorscheme molokai "gruvbox
+colorscheme Tomorrow-Night
 
 
 " <F8> | Rotate Color schemes
