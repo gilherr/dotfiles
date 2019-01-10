@@ -33,6 +33,9 @@ call plug#begin('~/.vim/plugged')
   
   " Python
   " Plug 'vim-scripts/indentpython.vim' "forces textwidth=80
+
+  " Docker
+  Plug 'moby/moby' , {'rtp': '/contrib/syntax/vim/'} "docker syntax
   
   "JavaScript
   Plug 'pangloss/vim-javascript'
@@ -42,6 +45,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-fugitive'		    " Git wrapper.
   
   " Colors
+  Plug 'sickill/vim-monokai'
   Plug 'jonathanfilip/vim-lucius'
   Plug 'tomasr/molokai'
   Plug 'chriskempson/vim-tomorrow-theme'
@@ -89,8 +93,9 @@ nnoremap <silent> <Leader>C        :Colors<CR>
 nnoremap <silent> <Leader><Enter>  :Files<CR>
 nnoremap <silent> <Leader>b        :Buffers<CR>
 nnoremap <silent> <Leader>L        :Lines<CR>
-nnoremap <silent> <Leader>ag       :Ag <C-R><C-W><CR>
-nnoremap <silent> <Leader>AG       :Ag <C-R><C-A><CR>
+nnoremap <silent> <Leader>ag       :Ag<CR>
+nnoremap <silent> <Leader>f        :BLines<CR>
+nnoremap <silent> <Leader><C-f>    :Lines<CR>
 nnoremap <silent> <Leader>m        :Marks<CR>
 
 " ================ Plug: replace-with-register ==============
@@ -120,7 +125,7 @@ let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""' " fzf hidden files
 
 " ================ Clipboard ==============
 
-" test if clopboard available with :echo has('clipboard')
+" test if clopboard is available with :echo has('clipboard')
 " if you get 0 - install vim-gtk (ubuntu) or gvim (arch)
 
 " ================ Turn Off Swap Files ==============
@@ -139,21 +144,6 @@ set softtabstop=4
 set tabstop=4
 set expandtab
 
-" ================ Completion =======================
-
-" set wildmode=list:longest
-" set wildmenu                "enable ctrl-n and ctrl-p to scroll thru matches
-" set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
-" set wildignore+=*vim/backups*
-" set wildignore+=*sass-cache*
-" set wildignore+=*DS_Store*
-" set wildignore+=vendor/rails/**
-" set wildignore+=vendor/cache/**
-" set wildignore+=*.gem
-" set wildignore+=log/**
-" set wildignore+=tmp/**
-" set wildignore+=*.png,*.jpg,*.gif
-
 " ================ Search ===========================
 
 set incsearch       " Find the next match as we type the search
@@ -166,13 +156,13 @@ set smartcase       " ...unless we type a capital
 set hidden  " Allow a buffer to stay unsaved in the background
 
 " ================ Maps ===========================
-
+" to find conflicting maps enter - :verbose map XXXX XXXX
 "add new line below/above cursor and stay in normal mode
 nnoremap <leader>o o<esc>
 nnoremap <leader>O O<esc>
 
 " remove highlighting after you are done with the search
-nnoremap <Leader><space> :noh<cr>
+nnoremap \ :noh<cr>
 
 " Save - if using 'konsole': edit profile->advanced->untick ctrl+s
 inoremap <C-s> <C-O>:update<cr>
@@ -198,12 +188,15 @@ nnoremap <C-H> <C-W><C-H>
 nnoremap <leader>l <esc>:tabnext<CR> 
 nnoremap <leader>h <esc>:tabprevious<CR> 
 
+" switch to last used buffer
+nnoremap <Leader><Space> :b#<cr>
+
 " insert a charecter while staying in normal mode
 nnoremap <C-i> i <Esc>r
 
 " ================ Colors ===========================
 
-colorscheme Tomorrow-Night
+colorscheme gruvbox
 
 
 " <F8> | Rotate Color schemes
