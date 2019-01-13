@@ -1,12 +1,8 @@
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 
-" Auto-source vimrc on save
-autocmd! bufwritepost .vimrc source %
-
 "change leader to space
 let mapleader = " "
-
 
 " ================ Vim-Plug ===========================
 
@@ -18,14 +14,16 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
-  Plug 'scrooloose/nerdtree'        "File Browser
-  Plug 'vim-airline/vim-airline'    "Status Line
+  Plug 'scrooloose/nerdtree'                        "File Browser
+  " Plug 'vim-airline/vim-airline'                    "Status Line
+  " Plug 'vim-airline/vim-airline-themes'
   Plug 'junegunn/fzf', { 'do': './install --bin' }  "FuzzyFinder
   Plug 'junegunn/fzf.vim'
-  Plug 'tpope/vim-surround'             "surroind stuff - cs'[<cr> / yss'
-  Plug 'tpope/vim-commentary'           "usage: gc[motion]
+  Plug 'tpope/vim-surround'                         "surroind stuff - cs'[<cr> / yss'
+  Plug 'tpope/vim-commentary'                       "usage: gc[motion]
   Plug 'tpope/vim-markdown'
-  Plug 'yuttie/comfortable-motion.vim'  "smooth scrolling
+  Plug 'yuttie/comfortable-motion.vim'              "smooth scrolling
+  Plug 'w0rp/ale'                                   "Asyc lint engine
   
   " Replace With Register - usage: [count]["x]gr{motion}   
   Plug 'vim-scripts/ReplaceWithRegister'
@@ -33,7 +31,8 @@ call plug#begin('~/.vim/plugged')
   
   " Python
   " Plug 'vim-scripts/indentpython.vim' "forces textwidth=80
-
+  Plug 'davidhalter/jedi-vim'
+  
   " Docker
   Plug 'moby/moby' , {'rtp': '/contrib/syntax/vim/'} "docker syntax
   
@@ -60,16 +59,27 @@ call plug#begin('~/.vim/plugged')
 
 call plug#end()
 
+
+" ================ Plug: Ale ===========================
+
+let g:ale_sign_error = '✗'
+let g:ale_sign_warning = '❗'
+let g:ale_linters = {
+\   'python': ['flake8'],
+\}
+" nmap <silent> <C-n> <Plug>(ale_next_wrap)
+
+
+" ================ Plug: Airline ===========================
+
+" let g:airline#extensions#ale#enabled = 1
+" let g:airline#extensions#branch#enabled = 1
+" let g:airline_theme = 'minimalist'
+
 " ================ Plug: NERDTREE ===========================
 
-"" close vim if only NERDtree left
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-let NERDTreeIgnore = ['__pycache__', '\.pyc$', '\.o$', '\.so$', '\.a$', '\.swp', '*\.swp', '\.swo', '\.swn', '\.swh', '\.swm', '\.swl', '\.swk', '\.sw*$', '[a-zA-Z]*egg[a-zA-Z]*', '.DS_Store']
-let NERDTreeShowHidden=1
-let g:NERDTreeDirArrows=0
-
 nnoremap <leader>n :NERDTreeToggle<CR>
+let NERDTreeShowHidden=1
 
 " ================ Plug: FZF ===========================
 
@@ -121,7 +131,11 @@ set textwidth=0                 " dont enforce text width
 set clipboard=unnamed           " Clipboard as default register
 set encoding=utf-8
 
-let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""' " fzf hidden files
+" fzf hidden files
+let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""' 
+
+" Auto-source vimrc on save
+autocmd! bufwritepost .vimrc source %  
 
 " ================ Clipboard ==============
 
@@ -154,6 +168,10 @@ set smartcase       " ...unless we type a capital
 " ================ Buffers ===========================
 
 set hidden  " Allow a buffer to stay unsaved in the background
+
+" ================ Diff ===========================
+
+set diffopt=filler,vertical " Vertical diff
 
 " ================ Maps ===========================
 " to find conflicting maps enter - :verbose map XXXX XXXX
@@ -191,8 +209,8 @@ nnoremap <leader>h <esc>:tabprevious<CR>
 " switch to last used buffer
 nnoremap <Leader><Space> :b#<cr>
 
-" insert a charecter while staying in normal mode
-nnoremap <C-i> i <Esc>r
+" insert a chdarecter while staying in normal mode
+" nnoremap <Leader>i i <Esc>r
 
 " ================ Colors ===========================
 
@@ -218,3 +236,7 @@ colorscheme gruvbox
       echo name
     endfunction
     nnoremap <silent> <F8> :call <SID>rotate_colors()<cr>
+
+" ================ Commands ===========================
+
+comm! Pr ! python %
