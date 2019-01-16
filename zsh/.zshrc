@@ -72,7 +72,7 @@ function source_zshrc {
     source ~/.zshrc
 }
 zle -N source_zshrc
-bindkey '\c[19~' source_zshrc  # F8 = source ~/.zshrc
+bindkey '^[[19~' source_zshrc  # F8 = source ~/.zshrc
 
 
 # ---------------------- Arrow key selection --------------------------
