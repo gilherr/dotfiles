@@ -1,99 +1,91 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+#!/usr/bin/env zsh
 
-# Path to your oh-my-zsh installation.
-  export ZSH="/home/giler/.oh-my-zsh"
+export DOTFILES=$HOME/dotfiles
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
- ZSH_THEME="myTheme" # original was "robbyrussell"
+HISTFILE=$HOME/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
 
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+# ---------------------- Make it Vimi --------------------------
 
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
+bindkey -v
 
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
+# ---------------------- Sources --------------------------
 
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
+source $DOTFILES/zsh/aliases
+source $HOME/.fzf.zsh
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
+# ---------------------- Key Bindings --------------------------
 
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
+bindkey '^?' backward-delete-char                   # backspace
+bindkey '^L' forward-word                           # ctrl+l
+bindkey '^H' backward-word                          # ctrl+h
+bindkey '^K' history-beginning-search-backward      # ctrl+j
+bindkey '^J' history-beginning-search-forward       # ctrl+j
+bindkey '^@' autosuggest-execute #-accept           # ctrl+space
+bindkey '\e[A' history-beginning-search-backward    # up
+bindkey '\e[B' history-beginning-search-forward     # down
+bindkey '\e[1;5C' forward-word                      # ctrl+right
+bindkey '\e[1;5D' backward-word                     # ctrl+left
+bindkey '\e[H' beginning-of-line                    # home
+bindkey '\e[F' end-of-line                          # end
+bindkey '\e[3~' delete-char                         # del
+bindkey '\e[2~' quoted-insert                       # insert
+bindkey '\e[5~' beginning-of-history                # pageup
+bindkey '\e[6~' end-of-history                      # pagedown
 
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
+# ---------------------- Prompt --------------------------
 
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+setopt prompt_subst # allow variables expansion in prompt
 
-# Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
+git_prompt() {
+  BRANCH=$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/*\(.*\)/\1/')
 
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
+  if [ ! -z $BRANCH ]; then
+    echo -n "%F{white}$BRANCH"
 
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
- HIST_STAMPS="yyyy-mm-dd"
+    if [ ! -z "$(git status --short)" ]; then
+      echo " %F{red}✗"
+    else
+      echo " %F{green}✔"
+    fi
+  fi
+}
 
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
+function zle-line-init zle-keymap-select {
+    VIM_PROMPT="%F{yellow}[NORMAL] %F{reset}"
+    ERROR_CODE_PROMPT="%(?..%F{red}%? ↵ %F{reset})"
+    RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/}$ERROR_CODE_PROMPT$(git_prompt) $EPS1"
+    zle reset-prompt
+}
 
-# Which plugins would you like to load?
-# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(
-  docker,
-  docker-compose,
-  git,
-  zsh-autosuggestions
-)
+zle -N zle-line-init
+zle -N zle-keymap-select
 
-source $ZSH/oh-my-zsh.sh
+PS1='%F{blue}%~%F{reset} %B$%b '
 
-# User configuration
 
-# export MANPATH="/usr/local/man:$MANPATH"
+# ---------------------- Source ~/.zshrc --------------------------
 
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+function source_zshrc {
+    source ~/.zshrc
+}
+zle -N source_zshrc
+bindkey '\c[19~' source_zshrc  # F8 = source ~/.zshrc
 
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
+# ---------------------- Arrow key selection --------------------------
 
-# ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
+zstyle ':completion:*' menu select
+zstyle ':completion:*' completer _complete
+zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+l:|=* r:|=*'
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
+autoload -U compinit && compinit
+zmodload -i zsh/complist
 
+# inspired by
+# https://github.com/joshtronic/dotfiles
+
+# syntax highlighting should be sourced last.
+source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

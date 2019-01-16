@@ -15,7 +15,7 @@ endif
 call plug#begin('~/.vim/plugged')
 
   Plug 'scrooloose/nerdtree'                        "File Browser
-  " Plug 'vim-airline/vim-airline'                    "Status Line
+  Plug 'vim-airline/vim-airline'                    "Status Line
   " Plug 'vim-airline/vim-airline-themes'
   Plug 'junegunn/fzf', { 'do': './install --bin' }  "FuzzyFinder
   Plug 'junegunn/fzf.vim'

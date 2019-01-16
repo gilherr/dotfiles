@@ -1,12 +1,20 @@
 #basic alias
-alias l='ls -lh'
-alias ll='ls -lah'
+alias l='ls --color=auto -lh'
+alias ll='ls --color=auto -lah'
+alias ls='ls --color=auto -hF'
+
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
 
 # tldr color scheme
 alias tldr='tldr -t ocean'
 
 # Use vim, not vi
 alias vi=vim
+
+# Colorize output and some exclusions
+alias grep="grep --color=auto --exclude-dir={.git,artwork,node_modules,vendor}"
 
 # Docker
 alias d='docker'
