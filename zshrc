@@ -1,23 +1,15 @@
 #!/usr/bin/env zsh
 
-export DOTFILES=$HOME/dotfiles
+export DOTFILES=$HOME/.dotfiles
+INCLUDES=$HOME/.local/share/dotfiles/zsh
 
 HISTFILE=$HOME/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
 
-# ---------------------- Make it Vimi --------------------------
-
-bindkey -v
-
-# ---------------------- Sources --------------------------
-
-source $DOTFILES/zsh/aliases
-source $HOME/.fzf.zsh
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-
 # ---------------------- Key Bindings --------------------------
 
+bindkey -v                                          # make it vim like
 bindkey '^?' backward-delete-char                   # backspace
 bindkey '^L' forward-word                           # ctrl+l
 bindkey '^H' backward-word                          # ctrl+h
@@ -84,8 +76,13 @@ zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower
 autoload -U compinit && compinit
 zmodload -i zsh/complist
 
+# ---------------------- Sources --------------------------
+
+source $DOTFILES/aliases
+source $HOME/.fzf.zsh
+source "$INCLUDES/zsh-autosuggestions/zsh-autosuggestions.zsh"
+source "$INCLUDES/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" # must be last
+
 # inspired by
 # https://github.com/joshtronic/dotfiles
 
-# syntax highlighting should be sourced last.
-source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

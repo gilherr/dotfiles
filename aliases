@@ -1,7 +1,7 @@
 #basic alias
-alias l='ls --color=auto -lh'
-alias ll='ls --color=auto -lah'
-alias ls='ls --color=auto -hF'
+alias ls='ls --color -h --group-directories-first'
+alias l='ls -l'
+alias ll='ls -lah'
 
 alias ..="cd .."
 alias ...="cd ../.."
