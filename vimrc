@@ -14,48 +14,24 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
-  Plug 'scrooloose/nerdtree'                        "File Browser
-  Plug 'vim-airline/vim-airline'                    "Status Line
-  " Plug 'vim-airline/vim-airline-themes'
-  Plug 'junegunn/fzf', { 'do': './install --bin' }  "FuzzyFinder
+  Plug 'scrooloose/nerdtree'                        " File Browser
+  Plug 'vim-airline/vim-airline'                    " Status Line
+  Plug 'vim-airline/vim-airline-themes'
+  Plug 'junegunn/fzf', { 'do': './install --bin' }  " FuzzyFinder
   Plug 'junegunn/fzf.vim'
-  Plug 'tpope/vim-surround'                         "surroind stuff - cs'[<cr> / yss'
-  Plug 'tpope/vim-commentary'                       "usage: gc[motion]
+  Plug 'tpope/vim-surround'                         " surroind stuff; cs'[<cr> / yss'
+  Plug 'tpope/vim-commentary'                       " comment out; gc[motion]
   Plug 'tpope/vim-markdown'
-  Plug 'yuttie/comfortable-motion.vim'              "smooth scrolling
-  Plug 'w0rp/ale'                                   "Asyc lint engine
-  
-  " Replace With Register - usage: [count]["x]gr{motion}   
   Plug 'vim-scripts/ReplaceWithRegister'
   Plug 'vim-scripts/ReplaceWithSameIndentRegister'
-  
-  " Python
-  " Plug 'vim-scripts/indentpython.vim' "forces textwidth=80
-  Plug 'davidhalter/jedi-vim'
-  
-  " Docker
-  Plug 'moby/moby' , {'rtp': '/contrib/syntax/vim/'} "docker syntax
-  
-  "JavaScript
-  Plug 'pangloss/vim-javascript'
-  
-  " Git
-  Plug 'airblade/vim-gitgutter'		"git diff in the 'gutter'
-  Plug 'tpope/vim-fugitive'		    " Git wrapper.
-  
-  " Colors
-  Plug 'sickill/vim-monokai'
-  Plug 'jonathanfilip/vim-lucius'
-  Plug 'tomasr/molokai'
-  Plug 'chriskempson/vim-tomorrow-theme'
-  Plug 'morhetz/gruvbox'
-  Plug 'AlessandroYorba/Despacio'
-  Plug 'cocopon/iceberg.vim'
-  Plug 'w0ng/vim-hybrid'
-  Plug 'nightsense/snow'
-  Plug 'nightsense/stellarized'
-  Plug 'arcticicestudio/nord-vim'
-  Plug 'jnurmine/Zenburn'
+  Plug 'w0rp/ale'                                   " Asyc lint engine
+  " Plug 'vim-scripts/indentpython.vim'             " forces textwidth=80
+  Plug 'davidhalter/jedi-vim'                       " python linter
+  Plug 'pangloss/vim-javascript'                    " javsctip syntax
+  Plug 'airblade/vim-gitgutter'		                " Git diff in the 'gutter'
+  Plug 'tpope/vim-fugitive'		                    " Git wrapper.
+  Plug 'morhetz/gruvbox'                            " ColorScheme
+  Plug 'chriskempson/vim-tomorrow-theme'            " ColorScheme
 
 call plug#end()
 
@@ -72,8 +48,8 @@ let g:ale_linters = {
 
 " ================ Plug: Airline ===========================
 
-" let g:airline#extensions#ale#enabled = 1
-" let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#ale#enabled = 1
+let g:airline#extensions#branch#enabled = 1
 " let g:airline_theme = 'minimalist'
 
 " ================ Plug: NERDTREE ===========================
@@ -182,9 +158,8 @@ nnoremap <leader>O O<esc>
 " remove highlighting after you are done with the search
 nnoremap \ :noh<cr>
 
-" Save - if using 'konsole': edit profile->advanced->untick ctrl+s
-inoremap <C-s> <C-O>:update<cr>
-nnoremap <C-s> :update<cr>
+" Save
+nnoremap <leader>s :update<cr>
 
 "Quit - see 'konsole' note above
 nnoremap <leader>q :q<CR>
