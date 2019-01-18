@@ -55,8 +55,7 @@ function zle-line-init zle-keymap-select {
 zle -N zle-line-init
 zle -N zle-keymap-select
 
-PS1='%F{blue}%~%F{reset} %B$%b '
-
+PS1=$'%{\e[1;34m%}%~%F{reset} %B$%b ' # %{\e[1;34m%} = lightblue
 
 # ---------------------- Source ~/.zshrc --------------------------
 
