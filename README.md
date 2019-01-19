@@ -1,8 +1,8 @@
 # Giler's dotfiles
 
-## Dependencies 
+## Things to install for everything to work well
 
-* oh-my-zsh
-* zsh-autosuggestions
-* ag    - [The Silver Searcher](https://github.com/ggreer/the_silver_searcher)
+* tmux
+* zsh
 * fzf   - [Fuzzy Finder](https://github.com/junegunn/fzf)
+* ag    - [The Silver Searcher](https://github.com/ggreer/the_silver_searcher)

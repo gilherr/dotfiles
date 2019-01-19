@@ -32,6 +32,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-fugitive'		                    " Git wrapper.
   Plug 'morhetz/gruvbox'                            " ColorScheme
   Plug 'chriskempson/vim-tomorrow-theme'            " ColorScheme
+  Plug 'tomasiser/vim-code-dark'                    " ColorScheme
 
 call plug#end()
 
@@ -50,7 +51,7 @@ let g:ale_linters = {
 
 let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#branch#enabled = 1
-" let g:airline_theme = 'minimalist'
+let g:airline_theme = 'codedark'
 
 " ================ Plug: NERDTREE ===========================
 
@@ -189,7 +190,7 @@ nnoremap <Leader><Space> :b#<cr>
 
 " ================ Colors ===========================
 
-colorscheme gruvbox
+colorscheme codedark
 
 
 " <F8> | Rotate Color schemes
