@@ -82,6 +82,7 @@ source $HOME/.fzf.zsh
 source "$INCLUDES/zsh-autosuggestions/zsh-autosuggestions.zsh"
 source "$INCLUDES/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" # must be last
 
+if [ "$TMUX" = "" ]; then tmux; fi
+
 # inspired by
 # https://github.com/joshtronic/dotfiles
-

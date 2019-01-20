@@ -21,15 +21,16 @@ call plug#begin('~/.vim/plugged')
   Plug 'junegunn/fzf.vim'
   Plug 'tpope/vim-surround'                         " surroind stuff; cs'[<cr> / yss'
   Plug 'tpope/vim-commentary'                       " comment out; gc[motion]
-  Plug 'tpope/vim-markdown'
-  Plug 'vim-scripts/ReplaceWithRegister'
-  Plug 'vim-scripts/ReplaceWithSameIndentRegister'
+  Plug 'tpope/vim-markdown'                         " markdown support
+  Plug 'vim-scripts/ReplaceWithRegister'            " replace with register
+  Plug 'vim-scripts/ReplaceWithSameIndentRegister'  " replace with register
   Plug 'w0rp/ale'                                   " Asyc lint engine
   " Plug 'vim-scripts/indentpython.vim'             " forces textwidth=80
   Plug 'davidhalter/jedi-vim'                       " python linter
   Plug 'pangloss/vim-javascript'                    " javsctip syntax
   Plug 'airblade/vim-gitgutter'		                " Git diff in the 'gutter'
   Plug 'tpope/vim-fugitive'		                    " Git wrapper.
+  Plug 'christoomey/vim-tmux-navigator'             " tmux pane switch
   Plug 'morhetz/gruvbox'                            " ColorScheme
   Plug 'chriskempson/vim-tomorrow-theme'            " ColorScheme
   Plug 'tomasiser/vim-code-dark'                    " ColorScheme
@@ -52,6 +53,7 @@ let g:ale_linters = {
 let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#branch#enabled = 1
 let g:airline_theme = 'codedark'
+let g:airline_powerline_fonts = 1
 
 " ================ Plug: NERDTREE ===========================
 

@@ -43,6 +43,8 @@ for INDEX in ${!ZSHPLUGS[*]}; do
   $GITCLONE "https://github.com/zsh-users/$ZSHPLUG.git" "$DOTLOCAL/zsh/$ZSHPLUG"
 done
 
+$GITCLONE "https://github.com/jimeh/tmux-themepack.git" "$DOTLOCAL/tmux-themepack"
+
 # TODO auto install Silver Searcher to find in all files on vim
 # ubuntu: apt-get install silversearcher-ag
 # arch:  pacman -S the_silver_searcher
