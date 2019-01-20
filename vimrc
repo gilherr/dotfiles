@@ -121,11 +121,23 @@ autocmd! bufwritepost .vimrc source %
 " test if clopboard is available with :echo has('clipboard')
 " if you get 0 - install vim-gtk (ubuntu) or gvim (arch)
 
-" ================ Turn Off Swap Files ==============
+" ================ Set vim files path ==============
 
-set noswapfile
-set nobackup
-set nowb
+if !isdirectory($HOME."/.vim/undo")
+    call mkdir($HOME."/.vim/undo", "", 0770)
+endif
+if !isdirectory($HOME."/.vim/backup")
+    call mkdir($HOME."/.vim/backup", "", 0700)
+endif
+if !isdirectory($HOME."/.vim/swp")
+    call mkdir($HOME."/.vim/swp", "", 0700)
+endif
+
+set undodir=~/.vim/undo//
+set backupdir=~/.vim/backup//
+set directory=~/.vim/swp// 
+
+set undofile 
 
 " ================ Indentation ======================
 
@@ -148,15 +160,15 @@ set smartcase       " ...unless we type a capital
 
 set hidden  " Allow a buffer to stay unsaved in the background
 
-" ================ Diff ===========================
-
-set diffopt=filler,vertical " Vertical diff
-
 " ================ Maps ===========================
 " to find conflicting maps enter - :verbose map XXXX XXXX
+
 "add new line below/above cursor and stay in normal mode
 nnoremap <leader>o o<esc>
 nnoremap <leader>O O<esc>
+
+" change work directory to current file's directory
+nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 
 " remove highlighting after you are done with the search
 nnoremap \ :noh<cr>
@@ -218,3 +230,4 @@ colorscheme codedark
 " ================ Commands ===========================
 
 comm! Pr ! python %
+comm! Br ! ./%

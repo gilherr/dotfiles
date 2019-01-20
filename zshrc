@@ -22,6 +22,7 @@ bindkey '\e[3~' delete-char                         # del
 bindkey '\e[2~' quoted-insert                       # insert
 bindkey '\e[5~' beginning-of-history                # pageup
 bindkey '\e[6~' end-of-history                      # pagedown
+
 # ---------------------- Prompt --------------------------
 
 setopt prompt_subst # allow variables expansion in prompt
