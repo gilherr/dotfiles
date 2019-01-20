@@ -11,10 +11,6 @@ SAVEHIST=10000
 
 bindkey -v                                          # make it vim like
 bindkey '^?' backward-delete-char                   # backspace
-bindkey '^L' forward-word                           # ctrl+l
-bindkey '^H' backward-word                          # ctrl+h
-bindkey '^K' history-beginning-search-backward      # ctrl+j
-bindkey '^J' history-beginning-search-forward       # ctrl+j
 bindkey '^@' autosuggest-execute #-accept           # ctrl+space
 bindkey '\e[A' history-beginning-search-backward    # up
 bindkey '\e[B' history-beginning-search-forward     # down
@@ -26,7 +22,6 @@ bindkey '\e[3~' delete-char                         # del
 bindkey '\e[2~' quoted-insert                       # insert
 bindkey '\e[5~' beginning-of-history                # pageup
 bindkey '\e[6~' end-of-history                      # pagedown
-
 # ---------------------- Prompt --------------------------
 
 setopt prompt_subst # allow variables expansion in prompt
@@ -78,6 +73,7 @@ zmodload -i zsh/complist
 # ---------------------- Sources --------------------------
 
 source $DOTFILES/aliases
+source $DOTFILES/env
 source $HOME/.fzf.zsh
 source "$INCLUDES/zsh-autosuggestions/zsh-autosuggestions.zsh"
 source "$INCLUDES/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" # must be last
