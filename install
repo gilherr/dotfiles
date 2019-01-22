@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# inspired by
+# https://github.com/joshtronic/dotfiles
+
 if [ -z "$HOME" ]; then echo "Seems you're \$HOMEless :("; exit 1; fi
 
 DOTFILES=$HOME/.dotfiles

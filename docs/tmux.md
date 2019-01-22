@@ -4,6 +4,8 @@
 
 ### Run tmux
 
+Run your terminal emulator with `<terminal> -e tmux` to autostart tmux
+
 | Command                             	| Description                 	|
 |-------------------------------------	|-----------------------------	|
 | `tmux new -s myname`                	| start new with session name 	|
