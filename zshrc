@@ -31,7 +31,7 @@ git_prompt() {
   BRANCH=$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/*\(.*\)/\1/')
 
   if [ ! -z $BRANCH ]; then
-    echo -n "%F{white}$BRANCH"
+    echo -n "$BRANCH"
 
     if [ ! -z "$(git status --short)" ]; then
       echo " %F{red}✗"
@@ -44,14 +44,15 @@ git_prompt() {
 function zle-line-init zle-keymap-select {
     VIM_PROMPT="%F{yellow}[NORMAL] %F{reset}"
     ERROR_CODE_PROMPT="%(?..%F{red}%? ↵ %F{reset})"
-    RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/}$ERROR_CODE_PROMPT$(git_prompt) $EPS1"
+    RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/}$ERROR_CODE_PROMPT $EPS1"
     zle reset-prompt
 }
 
 zle -N zle-line-init
 zle -N zle-keymap-select
 
-PS1=$'%{\e[1;34m%}%~%F{reset} %B$%b ' # %{\e[1;34m%} = lightblue
+PS1=$'%{\e[1;34m%}%~%F{cyan}$(git_prompt)%F{reset} %B$%b ' # %{\e[1;34m%} = lightblue
+# PS1="%F{blue}%~%F{cyan}$(git_prompt)%F{reset} %B$%b " # %{\e[1;34m%} = lightblue
 
 # ---------------------- Source ~/.zshrc --------------------------
 
@@ -79,7 +80,3 @@ source $HOME/.fzf.zsh
 source "$INCLUDES/zsh-autosuggestions/zsh-autosuggestions.zsh"
 source "$INCLUDES/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" # must be last
 
-if [ "$TMUX" = "" ]; then tmux; fi
-
-# inspired by
-# https://github.com/joshtronic/dotfiles
