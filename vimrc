@@ -26,7 +26,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'vim-scripts/ReplaceWithSameIndentRegister'  " replace with register
   Plug 'w0rp/ale'                                   " Asyc lint engine
   " Plug 'vim-scripts/indentpython.vim'             " forces textwidth=80
-  Plug 'davidhalter/jedi-vim'                       " python linter
+  Plug 'davidhalter/jedi-vim'                       " Python autocompletion
   Plug 'pangloss/vim-javascript'                    " javsctip syntax
   Plug 'airblade/vim-gitgutter'		                " Git diff in the 'gutter'
   Plug 'tpope/vim-fugitive'		                    " Git wrapper.
@@ -107,7 +107,7 @@ set scrolloff=5                 " Margin from top/bottom when scrolling
 set mouse=a                     " Enable mouse support in console
 set colorcolumn=80              " Mark where you should end a line
 set textwidth=0                 " dont enforce text width
-set clipboard=unnamed           " Clipboard as default register
+set clipboard=unnamedplus       " System Clipboard as default register
 set encoding=utf-8
 
 " fzf hidden files
@@ -199,12 +199,12 @@ nnoremap <leader>h <esc>:tabprevious<CR>
 " switch to last used buffer
 nnoremap <Leader><Space> :b#<cr>
 
-" insert a chdarecter while staying in normal mode
-" nnoremap <Leader>i i <Esc>r
+" insert a charecter while staying in normal mode
+nnoremap <Leader>i i <Esc>r
 
 " ================ Colors ===========================
 
-colorscheme codedark
+colorscheme gruvbox
 
 
 " <F8> | Rotate Color schemes
