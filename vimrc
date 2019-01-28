@@ -25,8 +25,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'vim-scripts/ReplaceWithRegister'            " replace with register
   Plug 'vim-scripts/ReplaceWithSameIndentRegister'  " replace with register
   Plug 'w0rp/ale'                                   " Asyc lint engine
-  " Plug 'vim-scripts/indentpython.vim'             " forces textwidth=80
-  Plug 'davidhalter/jedi-vim'                       " Python autocompletion
+  Plug 'vim-scripts/indentpython.vim', {'for': 'python'} " Python indent
+  Plug 'davidhalter/jedi-vim', {'for': 'python'}    " Python autocompletion
   Plug 'pangloss/vim-javascript'                    " javsctip syntax
   Plug 'airblade/vim-gitgutter'		                " Git diff in the 'gutter'
   Plug 'tpope/vim-fugitive'		                    " Git wrapper.
@@ -57,7 +57,7 @@ let g:airline_powerline_fonts = 1
 
 " ================ Plug: NERDTREE ===========================
 
-nnoremap <leader>n :NERDTreeToggle<CR>
+nnoremap <F1> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
 
 " ================ Plug: FZF ===========================
@@ -99,8 +99,8 @@ set nowrap                      " No wrap
 set number relativenumber       " Both numbered lines and relative numbers
 set backspace=indent,eol,start  " Allow backspace in insert mode
 set history=1000                " Store lots of :cmdline history
-set showcmd                     " Show incomplete cmds down the bottom
-set showmode                    " Show current mode down the bottom
+set showcmd                     " Show keys pressed for command
+set showmode                    " Show current mode 
 set gcr=a:blinkon0              " Disable cursor blink
 set autoread                    " Reload files changed outside vim
 set scrolloff=5                 " Margin from top/bottom when scrolling
@@ -109,6 +109,11 @@ set colorcolumn=80              " Mark where you should end a line
 set textwidth=0                 " dont enforce text width
 set clipboard=unnamedplus       " System Clipboard as default register
 set encoding=utf-8
+set signcolumn=yes              " keep gutter visibile - good for jedi
+set wildmenu                    " show possible command-line completions
+set cursorline                  " highlight current line
+set foldmethod=indent           " fold according to indentation 'za' 'zR' 'zM'
+set foldnestmax=2               
 
 " fzf hidden files
 let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""' 
@@ -176,8 +181,8 @@ nnoremap \ :noh<cr>
 " Save
 nnoremap <leader>s :update<cr>
 
-"Quit - see 'konsole' note above
-nnoremap <leader>q :q<CR>
+" Close window, doesnt quit if its the last window
+nnoremap <leader>q :close<CR>
 nnoremap <leader>Q :qa<CR>
 
 " Movement in insert mode
@@ -185,6 +190,9 @@ inoremap <C-h> <C-o>h
 inoremap <C-l> <C-o>a
 inoremap <C-j> <C-o>j
 inoremap <C-k> <C-o>k
+
+" Easy exit to normal mode
+inoremap ;; <ESC> 
 
 " split navigations
 nnoremap <C-J> <C-W><C-J>
