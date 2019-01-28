@@ -1,5 +1,12 @@
 # Vim Reminders
 
+## Misc
+
+| Description          | Command                     |
+|----------------------|-----------------------------|
+| upper/lowercase      | `gU{motion}` / `gu{motion}` |
+| upper/lowercase line | `gUU` / `guu`               |
+
 ## Search 
 
 Use `\v` when searching to simplify the regex.
@@ -9,15 +16,30 @@ This could also be used when using search and replace.
 |--------------------------------|---------------------------|
 | search using `very-magik`      | `:/\v<regex>`             |
 | search and replace with prompt | `:%s/\v<regex>/change/gc` |
+| search for word under cursur   | `*` / `#`                 |
 
 ## Scrolling
 
-| Description           | Command |
-|-----------------------|---------|
-| scroll down one line  | `<C-e>` |
-| scroll up one line    | `<C-y>` |
-| scroll down half page | `<C-d>` |
-| scroll up half page   | `<C-u>` |
+| Description              | Command              |
+|--------------------------|----------------------|
+| scroll up\down one line  | `<C-y>` \ `<C-e>`    |
+| scroll up\down half page | `<C-u>` \ `<C-d>`    |
+
+## Folding
+
+| Description       | Command |
+|-------------------|---------|
+| fold under cursor | `za`    |
+| fold all          | `zM`    |
+| unfold all        | `zR`    |
+
+## Macro
+
+| Description                  | Command        |
+|------------------------------|----------------|
+| start recording into `<reg>` | `:echo @<reg>` |
+| display recorded macro       | `:echo @<reg>` |
+| repeat the previous macro    | `@@`           |
 
 ## Marking
 
@@ -40,7 +62,7 @@ This could also be used when using search and replace.
 | jump back (to line in current buffer where jumped from)     | `<bt>''<bt>`|
 | jump back (to position in current buffer where jumped from) | `<bt> <bt>` |
 
-## Fugitive
+## Fugitive - git
 
 ### When editing
 

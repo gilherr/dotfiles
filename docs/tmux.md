@@ -13,6 +13,12 @@ Run your terminal emulator with `<terminal> -e tmux` to autostart tmux
 | `tmux a -t myname`                  	| attach to named             	|
 | `tmux ls`                           	| list sessions               	|
 
+### Session
+
+| Command                  | Description |
+|--------------------------|-------------|
+| rename current session   | `$`         |
+
 ### Window
 
 | Command         | Description |
@@ -25,24 +31,21 @@ Run your terminal emulator with `<terminal> -e tmux` to autostart tmux
 | name window     | `,`         |
 | kill window     | `&`         |
 
-
-
 ### Panes (splits)
 
-
-| Command                             | Description       |
-|-------------------------------------|-------------------|
-| vertical split                      | `%`               |
-| horizontal split                    | `"`               |
-| Resize pane in direction of <arrow> | `<pfx> C-<arrow>` |
-| swap panes                          | `o`               |
-| show pane numbers                   | `q`               |
-| kill pane                           | `x`               |
-| restore pane from window            | `-`               |
-| space - toggle between layouts      | ` `               |
-| Move the current pane left          | `<pfx> {`         |
-| Move the current pane right         | `<pfx> }`         |
-| toggle pane zoom                    | `<pfx> z`         |
+| Command                             | Description |
+|-------------------------------------|-------------|
+| vertical split                      | `%`         |
+| horizontal split                    | `"`         |
+| Resize pane in direction of <arrow> | `C-<arrow>` |
+| swap panes                          | `o`         |
+| show pane numbers                   | `q`         |
+| kill pane                           | `x`         |
+| restore pane from window            | `-`         |
+| space - toggle between layouts      | ` `         |
+| Move the current pane left          | `{`         |
+| Move the current pane right         | `}`         |
+| toggle pane zoom                    | `z`         |
 
 ### Copy mode
 
