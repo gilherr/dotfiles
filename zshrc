@@ -11,7 +11,8 @@ SAVEHIST=10000
 
 bindkey -v                                          # make it vim like
 bindkey '^?' backward-delete-char                   # backspace
-bindkey '^@' autosuggest-execute #-accept           # ctrl+space
+bindkey '^@' autosuggest-execute                    # ctrl+space
+bindkey '^X@s' autosuggest-accept                   # winkey+space
 bindkey '\e[A' history-beginning-search-backward    # up
 bindkey '\e[B' history-beginning-search-forward     # down
 bindkey '\e[1;5C' forward-word                      # ctrl+right
@@ -23,6 +24,8 @@ bindkey '\e[2~' quoted-insert                       # insert
 bindkey '\e[5~' beginning-of-history                # pageup
 bindkey '\e[6~' end-of-history                      # pagedown
 
+bindkey '\e[1~' beginning-of-line                    # home(tmux)
+bindkey '\e[4~' end-of-line                          # end(tmux)
 # ---------------------- Prompt --------------------------
 
 setopt prompt_subst # allow variables expansion in prompt
