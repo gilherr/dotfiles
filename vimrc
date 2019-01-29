@@ -34,6 +34,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'morhetz/gruvbox'                            " ColorScheme
   Plug 'chriskempson/vim-tomorrow-theme'            " ColorScheme
   Plug 'tomasiser/vim-code-dark'                    " ColorScheme
+  Plug 'terryma/vim-multiple-cursors'               " Sublime-text multicursor
 
 call plug#end()
 
@@ -190,9 +191,6 @@ inoremap <C-h> <C-o>h
 inoremap <C-l> <C-o>a
 inoremap <C-j> <C-o>j
 inoremap <C-k> <C-o>k
-
-" Easy exit to normal mode
-inoremap ;; <ESC> 
 
 " split navigations
 nnoremap <C-J> <C-W><C-J>
