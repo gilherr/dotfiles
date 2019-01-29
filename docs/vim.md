@@ -81,3 +81,13 @@ This could also be used when using search and replace.
 | open diff        | `D` / `ds` / `dv` |
 | show inline diff | `=`               |
 
+## Multi-Cursor
+
+| Description      | Command           |
+|------------------|-------------------|
+| start            | `<C-n>`           |
+| next             | `<C-n>`           |
+| skip             | `<C-x>`           |
+| prev             | `<C-p>`           |
+| select all       | `<A-n>`           |
+

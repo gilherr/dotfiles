@@ -15,9 +15,10 @@ Run your terminal emulator with `<terminal> -e tmux` to autostart tmux
 
 ### Session
 
-| Command                  | Description |
-|--------------------------|-------------|
-| rename current session   | `$`         |
+| Command                  | Description                       |
+|--------------------------|-----------------------------------|
+| rename current session   | `$`                               |
+| kill session by name     | `:kill-session -t <session-name>` |
 
 ### Window
 
@@ -53,3 +54,9 @@ To start `copy mode` press `<pfx> [`.
 Move around the buffer using vim controls or arrow keys.
 To start selection press `<space>` and copy with `<enter>`.
 You can toggle block visual mode by pressing `C-v`.
+
+
+### Mouse
+
+You can use the mouse to move or scale panes.
+Hold `<shift>` key to enable regular mouse usage like select-to-copy and paste.
