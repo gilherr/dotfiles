@@ -1,3 +1,7 @@
+# Navigation
+alias cddot="cd ~/.dotfiles"
+alias cdproj="cd ~/projects"
+
 #basic alias
 alias ls='ls --color -h --group-directories-first'
 alias l='ls -l'
@@ -6,6 +10,9 @@ alias ll='ls -lah'
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
+
+# Pretty print the path
+alias path="echo $PATH | tr -s ':' '\n'"
 
 # tldr color scheme
 alias tldr='tldr -t ocean'

@@ -1,8 +1,6 @@
 # tmux - Terminal Multiplexer
 
-## Useful Commands
-
-### Run tmux
+## Run tmux
 
 Run your terminal emulator with `<terminal> -e tmux` to autostart tmux
 
@@ -13,14 +11,14 @@ Run your terminal emulator with `<terminal> -e tmux` to autostart tmux
 | `tmux a -t myname`                  	| attach to named             	|
 | `tmux ls`                           	| list sessions               	|
 
-### Session
+## Session
 
 | Command                  | Description                       |
 |--------------------------|-----------------------------------|
 | rename current session   | `$`                               |
 | kill session by name     | `:kill-session -t <session-name>` |
 
-### Window
+## Window
 
 | Command         | Description |
 |-----------------|-------------|
@@ -32,7 +30,7 @@ Run your terminal emulator with `<terminal> -e tmux` to autostart tmux
 | name window     | `,`         |
 | kill window     | `&`         |
 
-### Panes (splits)
+## Panes (splits)
 
 | Command                             | Description |
 |-------------------------------------|-------------|
@@ -48,7 +46,7 @@ Run your terminal emulator with `<terminal> -e tmux` to autostart tmux
 | Move the current pane right         | `}`         |
 | toggle pane zoom                    | `z`         |
 
-### Copy mode
+## Copy mode
 
 To start `copy mode` press `<pfx> [`.
 Move around the buffer using vim controls or arrow keys.
@@ -56,7 +54,15 @@ To start selection press `<space>` and copy with `<enter>`.
 You can toggle block visual mode by pressing `C-v`.
 
 
-### Mouse
+## Mouse
 
 You can use the mouse to move or scale panes.
 Hold `<shift>` key to enable regular mouse usage like select-to-copy and paste.
+
+## References
+
+- [A guide to customizing your tmux conf/](https://www.hamvocke.com/blog/a-guide-to-customizing-your-tmux-conf)
+- [Navigate terminal output like a text file with vim keybinding](https://superuser.com/questions/1294618/how-can-i-navigate-terminal-output-like-a-text-file-with-vim-keybinding)
+- [vi mode in tmux](https://sanctum.geek.nz/arabesque/vi-mode-in-tmux)
+- [tmux themepack](https://github.com/jimeh/tmux-themepack)
+- [vim+tmux navigation](https://github.com/christoomey/vim-tmux-navigato)
