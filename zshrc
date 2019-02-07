@@ -13,6 +13,7 @@ bindkey -v                                          # make it vim like
 bindkey '^?' backward-delete-char                   # backspace
 bindkey '^@' autosuggest-execute                    # ctrl+space
 bindkey '^X@s' autosuggest-accept                   # winkey+space
+bindkey '^[.' insert-last-word                      # alt+.
 bindkey '\e[A' history-beginning-search-backward    # up
 bindkey '\e[B' history-beginning-search-forward     # down
 bindkey '\e[1;5C' forward-word                      # ctrl+right
