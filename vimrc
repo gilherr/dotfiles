@@ -22,6 +22,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-surround'                         " surroind stuff; cs'[<cr> / yss'
   Plug 'tpope/vim-commentary'                       " comment out; gc[motion]
   Plug 'tpope/vim-markdown'                         " markdown support
+  Plug 'tpope/vim-repeat'                           " enable plug repeat
   Plug 'vim-scripts/ReplaceWithRegister'            " replace with register
   Plug 'vim-scripts/ReplaceWithSameIndentRegister'  " replace with register
   Plug 'w0rp/ale'                                   " Asyc lint engine
@@ -208,6 +209,9 @@ nnoremap <Leader><Space> :b#<cr>
 " insert a charecter while staying in normal mode
 nnoremap <Leader>i i <Esc>r
 
+" search and reaplace word under cursor
+nnoremap <Leader>r :%s/\<<C-r><C-w>\>//gc<Left><Left><Left>
+
 " ================ Colors ===========================
 
 colorscheme gruvbox
@@ -235,5 +239,5 @@ colorscheme gruvbox
 
 " ================ Commands ===========================
 
-comm! Pr ! python %
+comm! Pr !clear && python %
 comm! Br ! ./%
