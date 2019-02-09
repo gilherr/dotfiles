@@ -7,6 +7,11 @@
 | upper/lowercase      | `gU{motion}` / `gu{motion}` |
 | upper/lowercase line | `gUU` / `guu`               |
 
+### Plugins
+
+To remove a plugin delete the Plug line(s) from your `.vimrc`,
+source it and call `:PlugClean`
+
 ## Search 
 
 Use `\v` when searching to simplify the regex.

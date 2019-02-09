@@ -60,11 +60,11 @@ PS1=$'%{\e[1;34m%}%~%F{cyan}$(git_prompt)%F{reset} %B$%b ' # %{\e[1;34m%} = ligh
 
 # ---------------------- Source ~/.zshrc --------------------------
 
-function source_zshrc {
-    source ~/.zshrc
-}
-zle -N source_zshrc
-bindkey '^[[19~' source_zshrc  # F8 = source ~/.zshrc
+# function source_zshrc {
+#     source ~/.zshrc
+# }
+# zle -N source_zshrc
+# bindkey '^[[19~' source_zshrc  # F8 = source ~/.zshrc
 
 
 # ---------------------- Arrow key selection --------------------------
