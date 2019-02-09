@@ -16,7 +16,6 @@ call plug#begin('~/.vim/plugged')
 
   Plug 'scrooloose/nerdtree'                        " File Browser
   Plug 'vim-airline/vim-airline'                    " Status Line
-  Plug 'vim-airline/vim-airline-themes'
   Plug 'junegunn/fzf', { 'do': './install --bin' }  " FuzzyFinder
   Plug 'junegunn/fzf.vim'
   Plug 'tpope/vim-surround'                         " surroind stuff; cs'[<cr> / yss'
@@ -42,8 +41,8 @@ call plug#end()
 
 " ================ Plug: Ale ===========================
 
-let g:ale_sign_error = '✗'
-let g:ale_sign_warning = '❗'
+let g:ale_sign_error = 'x'
+let g:ale_sign_warning = '!'
 let g:ale_linters = {
 \   'python': ['flake8'],
 \}
@@ -52,10 +51,15 @@ let g:ale_linters = {
 
 " ================ Plug: Airline ===========================
 
-let g:airline#extensions#ale#enabled = 1
-let g:airline#extensions#branch#enabled = 1
-let g:airline_theme = 'codedark'
+" let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
+let g:airline_section_z = ''                      " disbale `where` section
+
+" this fixes fonts issues. more at `:h airline -> CUSTOMIZATION` tag
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+let g:airline_symbols.whitespace = 'Ξ'
 
 " ================ Plug: NERDTREE ===========================
 
@@ -102,7 +106,7 @@ set number relativenumber       " Both numbered lines and relative numbers
 set backspace=indent,eol,start  " Allow backspace in insert mode
 set history=1000                " Store lots of :cmdline history
 set showcmd                     " Show keys pressed for command
-set showmode                    " Show current mode 
+set showmode                    " Show current mode
 set gcr=a:blinkon0              " Disable cursor blink
 set autoread                    " Reload files changed outside vim
 set scrolloff=5                 " Margin from top/bottom when scrolling
@@ -115,13 +119,14 @@ set signcolumn=yes              " keep gutter visibile - good for jedi
 set wildmenu                    " show possible command-line completions
 set cursorline                  " highlight current line
 set foldmethod=indent           " fold according to indentation 'za' 'zR' 'zM'
-set foldnestmax=2               
+set foldnestmax=2
+set splitbelow splitright       " Splits open at the bottom and right
 
 " fzf hidden files
-let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""' 
+let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
 
 " Auto-source vimrc on save
-autocmd! bufwritepost .vimrc source %  
+autocmd! bufwritepost .vimrc source %
 
 " ================ Clipboard ==============
 
@@ -142,9 +147,9 @@ endif
 
 set undodir=~/.vim/undo//
 set backupdir=~/.vim/backup//
-set directory=~/.vim/swp// 
+set directory=~/.vim/swp//
 
-set undofile 
+set undofile
 
 " ================ Indentation ======================
 
@@ -184,7 +189,7 @@ nnoremap \ :noh<cr>
 nnoremap <leader>s :update<cr>
 
 " Close window, doesnt quit if its the last window
-nnoremap <leader>q :close<CR>
+nnoremap <leader>q :q<CR>
 nnoremap <leader>Q :qa<CR>
 
 " Movement in insert mode
@@ -200,8 +205,8 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 " tabs nvigation
-nnoremap <leader>l <esc>:tabnext<CR> 
-nnoremap <leader>h <esc>:tabprevious<CR> 
+nnoremap <leader>l <esc>:tabnext<CR>
+nnoremap <leader>h <esc>:tabprevious<CR>
 
 " switch to last used buffer
 nnoremap <Leader><Space> :b#<cr>
@@ -209,8 +214,11 @@ nnoremap <Leader><Space> :b#<cr>
 " insert a charecter while staying in normal mode
 nnoremap <Leader>i i <Esc>r
 
-" search and reaplace word under cursor
+" search and replace word under cursor
 nnoremap <Leader>r :%s/\<<C-r><C-w>\>//gc<Left><Left><Left>
+
+" disable auto-comment next line
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 " ================ Colors ===========================
 
@@ -224,7 +232,7 @@ colorscheme gruvbox
             \           'fnamemodify(v:val, ":t:r")'),
             \       '!a:0 || stridx(v:val, a:1) >= 0')
     endfunction
-    
+
     function! s:rotate_colors()
       if !exists('s:colors')
         let s:colors = s:colors()
