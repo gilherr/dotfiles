@@ -27,6 +27,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'w0rp/ale'                                   " Asyc lint engine
   Plug 'vim-scripts/indentpython.vim', {'for': 'python'} " Python indent
   Plug 'davidhalter/jedi-vim', {'for': 'python'}    " Python autocompletion
+  Plug 'ambv/black'                                 " python formatter
   Plug 'pangloss/vim-javascript'                    " javsctip syntax
   Plug 'airblade/vim-gitgutter'		                " Git diff in the 'gutter'
   Plug 'tpope/vim-fugitive'		                    " Git wrapper.
@@ -120,6 +121,7 @@ set wildmenu                    " show possible command-line completions
 set cursorline                  " highlight current line
 set foldmethod=indent           " fold according to indentation 'za' 'zR' 'zM'
 set foldnestmax=2
+set nofoldenable                " disable folding
 set splitbelow splitright       " Splits open at the bottom and right
 
 " fzf hidden files
@@ -127,6 +129,12 @@ let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
 
 " Auto-source vimrc on save
 autocmd! bufwritepost .vimrc source %
+
+" ============== Trailing Whitespace ==============
+
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 
 " ================ Clipboard ==============
 
