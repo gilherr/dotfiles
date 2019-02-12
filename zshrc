@@ -93,3 +93,12 @@ export LESS_TERMCAP_se=$'\e[0m'           # end standout-mode
 export LESS_TERMCAP_so=$'\e[38;5;246m'    # begin standout-mode - info box
 export LESS_TERMCAP_ue=$'\e[0m'           # end underline
 export LESS_TERMCAP_us=$'\e[04;38;5;146m' # begin underline
+
+# ---------------------- Autocompletions --------------------------
+
+eval "`pip completion --zsh`"
+compctl -K _pip_completion pip3
+
+# ---------------------- Configure PATH --------------------------
+
+export PATH="$PATH:$HOME/.local/bin"    # python --user installation
