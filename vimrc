@@ -22,6 +22,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-commentary'                       " comment out; gc[motion]
   Plug 'tpope/vim-markdown'                         " markdown support
   Plug 'tpope/vim-repeat'                           " enable plug repeat
+  Plug 'godlygeek/tabular'                          " align text
+  Plug 'easymotion/vim-easymotion'                  " easymotion...
   Plug 'vim-scripts/ReplaceWithRegister'            " replace with register
   Plug 'vim-scripts/ReplaceWithSameIndentRegister'  " replace with register
   Plug 'w0rp/ale'                                   " Asyc lint engine
@@ -36,6 +38,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'chriskempson/vim-tomorrow-theme'            " ColorScheme
   Plug 'tomasiser/vim-code-dark'                    " ColorScheme
   Plug 'terryma/vim-multiple-cursors'               " Sublime-text multicursor
+  Plug 'townk/vim-autoclose'                        " autoclose ()[]{}''...
 
 call plug#end()
 
@@ -98,6 +101,12 @@ nnoremap <silent> <Leader>m        :Marks<CR>
 
 nmap <leader>gr "*gr
 nmap <leader>gR "*gR
+
+" ================ Plug: Tabular ==============
+
+if exists(":Tabularize")
+  nmap <Leader>t :Tabularize /\|<CR>
+endif
 
 " ================ Misc ==============
 
@@ -217,7 +226,7 @@ nnoremap <leader>l <esc>:tabnext<CR>
 nnoremap <leader>h <esc>:tabprevious<CR>
 
 " switch to last used buffer
-nnoremap <Leader><Space> :b#<cr>
+nnoremap <Leader>j :b#<cr>
 
 " insert a charecter while staying in normal mode
 nnoremap <Leader>i i <Esc>r
@@ -256,4 +265,5 @@ colorscheme gruvbox
 " ================ Commands ===========================
 
 comm! Pr !clear && python %
+noremap <F5> :w<CR>:!clear && python %<CR>
 comm! Br ! ./%
