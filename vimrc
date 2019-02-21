@@ -205,7 +205,7 @@ nnoremap \ :noh<cr>
 " Save
 nnoremap <leader>s :update<cr>
 
-" Close window, doesnt quit if its the last window
+" Close window
 nnoremap <leader>q :q<CR>
 nnoremap <leader>Q :qa<CR>
 
@@ -214,6 +214,10 @@ inoremap <C-h> <C-o>h
 inoremap <C-l> <C-o>a
 inoremap <C-j> <C-o>j
 inoremap <C-k> <C-o>k
+inoremap <C-r> <C-o>$
+inoremap <C-e> <C-o>0
+inoremap <C-w> <C-o>w
+inoremap <C-b> <C-o>b
 
 " split navigations
 nnoremap <C-J> <C-W><C-J>
@@ -236,6 +240,18 @@ nnoremap <Leader>r :%s/\<<C-r><C-w>\>//gc<Left><Left><Left>
 
 " disable auto-comment next line
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
+" resize buffers quickly
+nnoremap <silent> <Leader>+ :exe "vertical resize " . (winwidth(0) * 3/2)<CR>
+nnoremap <silent> <Leader>- :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
+
+" =========== Python Specific Bindings ==============
+
+augroup pythonbindings
+  autocmd! pythonbindings
+  autocmd Filetype python nnoremap <buffer> <silent> <F5> :w<CR>:!clear && python %<CR>
+  autocmd Filetype python nnoremap <buffer> <silent> <F2> :Black<CR>
+augroup end
 
 " ================ Colors ===========================
 
@@ -264,6 +280,4 @@ colorscheme gruvbox
 
 " ================ Commands ===========================
 
-comm! Pr !clear && python %
-noremap <F5> :w<CR>:!clear && python %<CR>
 comm! Br ! ./%
