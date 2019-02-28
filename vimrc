@@ -90,6 +90,9 @@ let NERDTreeShowHidden=1
 
 " ================ Plug: FZF ===========================
 
+" fzf hidden files
+let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
+
 let g:fzf_colors =
 \ { 'fg':      ['fg', 'Normal'],
   \ 'bg':      ['bg', 'Normal'],
@@ -110,7 +113,7 @@ nnoremap <silent> <Leader>C        :Colors<CR>
 nnoremap <silent> <Leader><Enter>  :Files<CR>
 nnoremap <silent> <Leader>b        :Buffers<CR>
 nnoremap <silent> <Leader>L        :Lines<CR>
-nnoremap <silent> <Leader>ag       :Ag<CR>
+nnoremap <silent> <c-f>            :Ag<CR>
 nnoremap <silent> <Leader>f        :BLines<CR>
 nnoremap <silent> <Leader><C-f>    :Lines<CR>
 " nnoremap <silent> <Leader>m        :Marks<CR> " conflicts with markdown
@@ -125,6 +128,10 @@ nmap <leader>gR "*gR
 if exists(":Tabularize")
   nmap <Leader>t :Tabularize /\|<CR>
 endif
+
+" ================ Plug: easymotion ===========
+
+" map <Leader> <Plug>(easymotion-prefix)
 
 " ================ Misc ==============
 
@@ -151,8 +158,6 @@ set foldnestmax=2
 set nofoldenable                " disable folding
 set splitbelow splitright       " Splits open at the bottom and right
 
-" fzf hidden files
-" let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
 
 " Auto-source vimrc on save
 autocmd! bufwritepost .vimrc source %
