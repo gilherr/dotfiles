@@ -1,5 +1,6 @@
 " This must be first, because it changes other options as a side effect.
 set nocompatible
+filetype plugin on
 
 "change leader to space
 let mapleader = " "
@@ -39,9 +40,26 @@ call plug#begin('~/.vim/plugged')
   Plug 'tomasiser/vim-code-dark'                    " ColorScheme
   Plug 'terryma/vim-multiple-cursors'               " Sublime-text multicursor
   Plug 'townk/vim-autoclose'                        " autoclose ()[]{}''...
+  Plug 'vimwiki/vimwiki'                            " wiki tool
+  Plug 'suan/vim-instant-markdown'                  " live markdown rendering
 
 call plug#end()
 
+
+" ================ Plug: vimwiki ===========================
+
+let g:vimwiki_ext2syntax = {
+            \'.md': 'markdown',
+            \'.markdown': 'markdown',
+            \'.mdown': 'markdown'
+            \}
+
+" =========== Plug: Instant-Markdown =======================
+
+au FileType markdown setl shell=bash\ -i            " bugfix if using zsh
+let g:instant_markdown_autostart = 0                " disable autostart
+" let g:instant_markdown_slow = 1
+map <leader>md :InstantMarkdownPreview<CR>
 
 " ================ Plug: Ale ===========================
 
@@ -95,7 +113,7 @@ nnoremap <silent> <Leader>L        :Lines<CR>
 nnoremap <silent> <Leader>ag       :Ag<CR>
 nnoremap <silent> <Leader>f        :BLines<CR>
 nnoremap <silent> <Leader><C-f>    :Lines<CR>
-nnoremap <silent> <Leader>m        :Marks<CR>
+" nnoremap <silent> <Leader>m        :Marks<CR> " conflicts with markdown
 
 " ================ Plug: replace-with-register ==============
 
@@ -134,7 +152,7 @@ set nofoldenable                " disable folding
 set splitbelow splitright       " Splits open at the bottom and right
 
 " fzf hidden files
-let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
+" let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
 
 " Auto-source vimrc on save
 autocmd! bufwritepost .vimrc source %
