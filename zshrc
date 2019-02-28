@@ -18,15 +18,15 @@ bindkey '\e[A' history-beginning-search-backward    # up
 bindkey '\e[B' history-beginning-search-forward     # down
 bindkey '\e[1;5C' forward-word                      # ctrl+right
 bindkey '\e[1;5D' backward-word                     # ctrl+left
-bindkey '\e[H' beginning-of-line                    # home
-bindkey '\e[F' end-of-line                          # end
+bindkey '\e[7~' beginning-of-line                   # home
+bindkey '\e[8~' end-of-line                         # end
 bindkey '\e[3~' delete-char                         # del
 bindkey '\e[2~' quoted-insert                       # insert
 bindkey '\e[5~' beginning-of-history                # pageup
 bindkey '\e[6~' end-of-history                      # pagedown
 
-bindkey '\e[1~' beginning-of-line                    # home(tmux)
-bindkey '\e[4~' end-of-line                          # end(tmux)
+bindkey '\e[1~' beginning-of-line                   # home(tmux)
+bindkey '\e[4~' end-of-line                         # end(tmux)
 # ---------------------- Prompt --------------------------
 
 setopt prompt_subst # allow variables expansion in prompt
@@ -96,9 +96,17 @@ export LESS_TERMCAP_us=$'\e[04;38;5;146m' # begin underline
 
 # ---------------------- Autocompletions --------------------------
 
-eval "`pip completion --zsh`"
-compctl -K _pip_completion pip3
+# # commented as it delays shell startup
+# eval "`pip completion --zsh`"
+# compctl -K _pip_completion pip3
 
-# ---------------------- Configure PATH --------------------------
+# ---------------------- Configure Pytho Path ---------------------
 
 export PATH="$PATH:$HOME/.local/bin"    # python --user installation
+
+# ----------------- Configure NPM Install Dir ---------------------
+
+NPM_PACKAGES="${HOME}/.npm-packages"
+export PATH="$NPM_PACKAGES/bin:$PATH"
+unset MANPATH
+export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
