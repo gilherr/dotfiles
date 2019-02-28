@@ -190,6 +190,9 @@ bindsym $mod+Shift+6 move container to workspace $ws6; workspace $ws6
 bindsym $mod+Shift+7 move container to workspace $ws7; workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
 
+# Move the whole workspace to the next output
+bindsym $mod+Shift+m move workspace to output right
+
 # Open applications on specific workspaces
 # assign [class="Thunderbird"] $ws1
 # assign [class="Pale moon"] $ws2
@@ -384,7 +387,7 @@ gaps outer -2
 # gaps outer all plus 5
 
 # Smart gaps (gaps used if only more than one container on the workspace)
-# smart_gaps on
+smart_gaps on
 
 # Smart borders (draw borders around container only if it is not the only container on this workspace)
 # on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
@@ -427,10 +430,21 @@ mode "$mode_gaps_outer" {
         bindsym Escape mode "default"
 }
 
-# change keyboard layout with Alt+Shift
-exec "setxkbmap -layout us,il"
-exec "setxkbmap -option grp:alt_shift_toggle"
+# # change keyboard layout with Alt+Shift
+# exec_always --no-startup-id setxkbmap -layout us,il
+# exec_always --no-startup-id setxkbmap -option grp:alt_shift_toggle
 
 # CapsLock <- Esc
-exec xmodmap -e "clear lock"
-exec xmodmap -e "keysym Caps_Lock = Escape"
+exec_always --no-startup-id setxkbmap -option "caps:escape"
+# exec_always --no-startup-id xmodmap -e "clear lock"
+# exec_always --no-startup-id xmodmap -e "keycode 66 = Escape NoSymbol Escape"
+
+# Disable system bell
+exec_always --no-startup-id xset -b
+
+# open music on workspace 5
+# assign [class="Clementine"] $ws5
+# exec clementine
+
+# Monitor Setup
+exec --no-startup-id ~/.screenlayout/screenlayout.sh
