@@ -16,7 +16,6 @@ endif
 call plug#begin('~/.vim/plugged')
 
   Plug 'scrooloose/nerdtree'                        " File Browser
-  Plug 'vim-airline/vim-airline'                    " Status Line
   Plug 'junegunn/fzf', { 'do': './install --bin' }  " FuzzyFinder
   Plug 'junegunn/fzf.vim'
   Plug 'tpope/vim-surround'                         " surroind stuff; cs'[<cr> / yss'
@@ -69,19 +68,6 @@ let g:ale_linters = {
 \   'python': ['flake8'],
 \}
 " nmap <silent> <C-n> <Plug>(ale_next_wrap)
-
-
-" ================ Plug: Airline ===========================
-
-" let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
-let g:airline_section_z = ''                      " disbale `where` section
-
-" this fixes fonts issues. more at `:h airline -> CUSTOMIZATION` tag
-if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
-endif
-let g:airline_symbols.whitespace = 'Ξ'
 
 " ================ Plug: NERDTREE ===========================
 
@@ -267,6 +253,33 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 " resize buffers quickly
 nnoremap <silent> <Leader>+ :exe "vertical resize " . (winwidth(0) * 3/2)<CR>
 nnoremap <silent> <Leader>- :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
+
+" =========== Custom Status Line ==============
+
+function! GitBranch()
+  return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
+endfunction
+
+function! StatuslineGit()
+  let l:branchname = GitBranch()
+  return strlen(l:branchname) > 0?'  '.l:branchname.' ':''
+endfunction
+
+set laststatus=2
+set statusline=
+set statusline+=%#PmenuSel#
+" set statusline+=%{StatuslineGit()}  # have issues when not in git dir
+set statusline+=%#LineNr#
+set statusline+=\ %F
+set statusline+=%m\
+set statusline+=%=
+set statusline+=%#CursorColumn#
+set statusline+=\ %y
+set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
+set statusline+=\ [%{&fileformat}\]
+set statusline+=\ %p%%
+set statusline+=\ [%3l:%3c]
+set statusline+=\ 
 
 " =========== Python Specific Bindings ==============
 
