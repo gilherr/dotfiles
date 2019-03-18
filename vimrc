@@ -41,6 +41,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'townk/vim-autoclose'                        " autoclose ()[]{}''...
   Plug 'vimwiki/vimwiki'                            " wiki tool
   Plug 'suan/vim-instant-markdown'                  " live markdown rendering
+  Plug 'ervandew/supertab'                          " tab completion
 
 call plug#end()
 
@@ -119,11 +120,16 @@ endif
 
 " map <Leader> <Plug>(easymotion-prefix)
 
+" ================ Plug: Jedi ==============
+
+let g:jedi#popup_on_dot = 0
+let g:jedi#show_call_signatures = "2"   " show in cmnd line, not popup
+
 " ================ Misc ==============
 
 syntax on                       " Turn on syntax highlighting
 set nowrap                      " No wrap
-set number relativenumber       " Both numbered lines and relative numbers
+set number                      " Both numbered lines and relative numbers
 set backspace=indent,eol,start  " Allow backspace in insert mode
 set history=1000                " Store lots of :cmdline history
 set showcmd                     " Show keys pressed for command
@@ -143,7 +149,6 @@ set foldmethod=indent           " fold according to indentation 'za' 'zR' 'zM'
 set foldnestmax=2
 set nofoldenable                " disable folding
 set splitbelow splitright       " Splits open at the bottom and right
-
 
 " Auto-source vimrc on save
 autocmd! bufwritepost .vimrc source %
@@ -223,8 +228,7 @@ inoremap <C-h> <C-o>h
 inoremap <C-l> <C-o>a
 inoremap <C-j> <C-o>j
 inoremap <C-k> <C-o>k
-inoremap <C-r> <C-o>$
-inoremap <C-e> <C-o>0
+inoremap <C-e> <C-o>$
 inoremap <C-w> <C-o>w
 inoremap <C-b> <C-o>b
 
@@ -291,7 +295,7 @@ augroup end
 
 " ================ Colors ===========================
 
-colorscheme gruvbox
+" colorscheme gruvbox
 
 
 " <F8> | Rotate Color schemes
