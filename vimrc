@@ -22,6 +22,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-commentary'                       " comment out; gc[motion]
   Plug 'tpope/vim-markdown'                         " markdown support
   Plug 'tpope/vim-repeat'                           " enable plug repeat
+  Plug 'tpope/vim-fugitive'		                    " Git wrapper.
   Plug 'godlygeek/tabular'                          " align text
   Plug 'easymotion/vim-easymotion'                  " easymotion...
   Plug 'vim-scripts/ReplaceWithRegister'            " replace with register
@@ -30,17 +31,14 @@ call plug#begin('~/.vim/plugged')
   Plug 'vim-scripts/indentpython.vim', {'for': 'python'} " Python indent
   Plug 'davidhalter/jedi-vim', {'for': 'python'}    " Python autocompletion
   Plug 'ambv/black'                                 " python formatter
-  Plug 'pangloss/vim-javascript'                    " javsctip syntax
+  Plug 'pangloss/vim-javascript'                    " javscritp syntax
   Plug 'airblade/vim-gitgutter'		                " Git diff in the 'gutter'
-  Plug 'tpope/vim-fugitive'		                    " Git wrapper.
   Plug 'christoomey/vim-tmux-navigator'             " tmux pane switch
   Plug 'morhetz/gruvbox'                            " ColorScheme
   Plug 'chriskempson/vim-tomorrow-theme'            " ColorScheme
   Plug 'tomasiser/vim-code-dark'                    " ColorScheme
-  Plug 'terryma/vim-multiple-cursors'               " Sublime-text multicursor
   Plug 'townk/vim-autoclose'                        " autoclose ()[]{}''...
   Plug 'vimwiki/vimwiki'                            " wiki tool
-  Plug 'suan/vim-instant-markdown'                  " live markdown rendering
   Plug 'ervandew/supertab'                          " tab completion
 
 call plug#end()
@@ -53,13 +51,6 @@ let g:vimwiki_ext2syntax = {
             \'.markdown': 'markdown',
             \'.mdown': 'markdown'
             \}
-
-" =========== Plug: Instant-Markdown =======================
-
-au FileType markdown setl shell=bash\ -i            " bugfix if using zsh
-let g:instant_markdown_autostart = 0                " disable autostart
-" let g:instant_markdown_slow = 1
-map <leader>md :InstantMarkdownPreview<CR>
 
 " ================ Plug: Ale ===========================
 
@@ -103,7 +94,6 @@ nnoremap <silent> <Leader>L        :Lines<CR>
 nnoremap <silent> <c-f>            :Ag<CR>
 nnoremap <silent> <Leader>f        :BLines<CR>
 nnoremap <silent> <Leader><C-f>    :Lines<CR>
-" nnoremap <silent> <Leader>m        :Marks<CR> " conflicts with markdown
 
 " ================ Plug: replace-with-register ==============
 
@@ -118,7 +108,7 @@ endif
 
 " ================ Plug: easymotion ===========
 
-" map <Leader> <Plug>(easymotion-prefix)
+map <leader><leader> <S-H><Plug>(easymotion-prefix)f
 
 " ================ Plug: Jedi ==============
 
