@@ -1,5 +1,4 @@
 # Navigation
-alias cddot="cd ~/.dotfiles"
 alias cdproj="cd ~/projects"
 
 #basic alias
@@ -38,3 +37,15 @@ alias gitlog='git log --oneline --graph --decorate --all'
 
 # list and grep for the parameter
 lg() { ls -la | grep $1 -i; }
+
+dot() {
+    dir=~/.dotfiles
+    case "$1" in
+        v) dot=vimrc ;;
+        z) dot=zshrc ;;
+        i) dot=manjaroi3config ;;
+        *) dot=. ;;
+    esac
+    cd ~/.dotfiles
+    vim $dot
+    }
