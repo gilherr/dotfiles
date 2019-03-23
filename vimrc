@@ -119,7 +119,7 @@ let g:jedi#show_call_signatures = "2"   " show in cmnd line, not popup
 
 syntax on                       " Turn on syntax highlighting
 set nowrap                      " No wrap
-set number                      " Both numbered lines and relative numbers
+set number                      " Both numbered lines
 set backspace=indent,eol,start  " Allow backspace in insert mode
 set history=1000                " Store lots of :cmdline history
 set showcmd                     " Show keys pressed for command
@@ -148,6 +148,10 @@ autocmd! bufwritepost .vimrc source %
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
+
+" ============== Colorcolumn color ==============
+
+highlight ColorColumn ctermbg=0
 
 " ================ Clipboard ==============
 
@@ -285,7 +289,7 @@ augroup end
 
 " ================ Colors ===========================
 
-" colorscheme gruvbox
+colorscheme gruvbox
 
 
 " <F8> | Rotate Color schemes
@@ -311,3 +315,6 @@ augroup end
 " ================ Commands ===========================
 
 comm! Br ! ./%
+
+
+nnoremap <silent> <F5> :w<CR>:!clear && ruby %<CR>
