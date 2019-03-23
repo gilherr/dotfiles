@@ -1,0 +1,47 @@
+set number
+set incsearch hlsearch
+set ignorecase smartcase
+set clipboard=unnamed
+set scrolloff=5
+set showmode
+set undolevels=5000
+set wrapscan
+set visualbell
+set surround
+
+" ================ Maps ===========================
+
+let mapleader = " "
+
+" yank to the end of the line
+nnoremap Y y$
+" apply macro from register q
+nnoremap Q @q
+
+" stop highlighting after search
+nnoremap \ :noh<cr>
+
+" add new line below/above and stay in normal mode
+nnoremap <leader>O O<Esc>
+nnoremap <leader>o o<Esc>
+nnoremap <s-cr> O<Esc>
+nnoremap <cr> o<Esc>
+
+" lame implementation of ReplaceWithRegister
+nnoremap grp "_diwP
+
+" make backspace usable in normal and visual (selection)
+vnoremap <BS> x
+nnoremap <BS> X
+
+
+" self explenatory InteliJ actions
+nnoremap <Leader>/ :action Find<CR>
+nnoremap <Leader>r :action RenameElement<CR>
+nnoremap <Leader>s :action SaveAll<CR>
+nnoremap <Leader>b :action FileStructurePopup<CR>
+nnoremap <Leader>z :action Run<CR>
+nnoremap <Leader>nf :action NewFile<CR>
+nnoremap gcc :action CommentByLineComment<cr>
+nnoremap [c :action VcsShowPrevChangeMarker<cr>
+nnoremap ]c :action VcsShowNextChangeMarker<cr>
