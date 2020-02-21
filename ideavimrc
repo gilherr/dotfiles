@@ -15,8 +15,15 @@ let mapleader = " "
 
 " yank to the end of the line
 nnoremap Y y$
+
 " apply macro from register q
 nnoremap Q @q
+
+" go to end/start of line
+nnoremap L $
+vnoremap L $
+nnoremap H ^
+vnoremap H ^
 
 " stop highlighting after search
 nnoremap \ :noh<cr>
@@ -34,7 +41,6 @@ nnoremap grp "_diwP
 vnoremap <BS> x
 nnoremap <BS> X
 
-
 " self explenatory InteliJ actions
 nnoremap <Leader>/ :action Find<CR>
 nnoremap <Leader>r :action RenameElement<CR>
@@ -42,6 +48,30 @@ nnoremap <Leader>s :action SaveAll<CR>
 nnoremap <Leader>b :action FileStructurePopup<CR>
 nnoremap <Leader>z :action Run<CR>
 nnoremap <Leader>nf :action NewFile<CR>
-nnoremap gcc :action CommentByLineComment<cr>
 nnoremap [c :action VcsShowPrevChangeMarker<cr>
 nnoremap ]c :action VcsShowNextChangeMarker<cr>
+
+nnoremap ga :action GotoAction<CR>
+nnoremap gd :action GotoDeclaration<CR>
+nnoremap gs :action GotoSuperMethod<CR>
+nnoremap gi :action GotoImplementation<CR>
+nnoremap gf :action GotoFile<CR>
+
+nnoremap gc :action JumpToLastChange<CR>
+nnoremap gh :action Back<CR>
+nnoremap gl :action Forward<CR>
+
+nnoremap U :action FindUsages<CR>
+nnoremap R :action RenameElement<CR>
+
+" paste from clipboard history
+nnoremap <Leader>p :action PasteMultiple<CR>
+
+nnoremap == :action ReformatCode<CR>
+vnoremap == :action ReformatCode<CR>
+
+nmap <leader><leader>s :action KJumpAction
+nmap <leader><leader>w :action KJumpAction.Word0<cr>
+nmap <leader><leader>l :action KJumpAction.Line<cr>
+
+inoremap <C-r> <C-o>A

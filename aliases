@@ -1,38 +1,48 @@
-# Navigation
-alias cdproj="cd ~/projects"
-
 #basic alias
-alias ls='ls --color -h --group-directories-first'
+alias ls='ls -h'
 alias l='ls -l'
 alias ll='ls -lah'
-
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
 
 # Pretty print the path
 alias path="echo $PATH | tr -s ':' '\n'"
 
-# tldr color scheme
-alias tldr='tldr -t ocean'
-
 # Use vim, not vi
 alias vi=vim
-
-# Colorize output and some exclusions
-alias grep="grep --color=auto --exclude-dir={.git,artwork,node_modules,vendor}"
-
-# Docker
-alias dstart='systemctl start docker.service'
-alias d='docker'
-alias dc='docker-compose'
-alias dl='docker ps -a'
-alias di='docker images'
-alias drmin='docker rmi $(docker images -q --filter "dangling=true")' # remove <none> containers
+alias vimrc='vi ~/.vimrc'
 
 # Git
 alias gitlog='git log --oneline --graph --decorate --all'
 
+# Frontend
+alias festart='cd ~/repos/frontend && npm start'
+
+# Docker
+
+# missing '
+# alias stopkiq='docker stop $(docker ps | grep sidekiq | awk '{print $1}')"
+
+# Conjure
+alias conjure='conjure -v'
+alias cj='conjure'
+alias cjr='conjure refresh'
+alias cex="conjure exec -it -e COLUMNS="`tput cols`" -e LINES="`tput lines`""
+alias csw='conjure switch'
+
+alias clt='conjure logs -f tailor'
+alias cet='conjure errors -f tailor'
+alias crt='conjure raise tailor'
+alias cdt='conjure down tailor'
+alias cst='conjure status tailor'
+alias cswt='conjure switch tailor otto tailor-sidekiq'
+alias cmt='conjure unmonitor tailor && conjure monitor tailor'
+alias cdc='docker-compose -f ~/repos/tailor/.conjure/docker-compose_tailor.yml'
+
+alias cls='conjure logs -ft social-api'
+alias crs='conjure raise social-api'
+alias ces='conjure errors -ft social-api'
+alias cdcs='docker-compose -f ~/repos/social-api/.conjure/docker-compose_social-api.yml'
+
+alias nosocial='dk "pxf|muse-renderer|pxr|pxr-js|guggenheim|bazooka-api|pxe|social-networks-proxy|content-warehouse|autopilot|heapify"'
 #### Functions ####
 
 # list and grep for the parameter
@@ -49,3 +59,31 @@ dot() {
     cd ~/.dotfiles
     vim $dot
     }
+
+
+front()  { cd ~/repos/frontend; "$@" }
+tailor() { cd ~/repos/tailor;   "$@" }
+pony()   { cd ~/repos/pony-api; "$@" }
+pxf()    { cd ~/repos/pxf;      "$@" }
+
+dk(){
+	docker ps --format "table {{.ID}}\t{{.Image}}" | grep -E "($1)" | awk '{print $1}' | xargs -P 30  docker stop
+}
+
+dps() {
+  docker ps -a --format "table {{.ID}}\t{{.Image}}"
+}
+
+# Codi
+# Usage: codi [filetype] [filename]
+codi() {
+  local syntax="${1:-javascript}"
+  shift
+  vim -c \
+    "let g:startify_disable_at_vimenter = 1 |\
+    set bt=nofile ls=0 noru nonu nornu |\
+    hi ColorColumn ctermbg=NONE |\
+    hi VertSplit ctermbg=NONE |\
+    hi NonText ctermfg=0 |\
+    Codi $syntax" "$@"
+}

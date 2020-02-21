@@ -14,40 +14,13 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
-  Plug 'ekalinin/Dockerfile.vim'
-  Plug 'scrooloose/nerdtree'                        " File Browser
-  Plug 'junegunn/fzf', { 'do': './install --bin' }  " FuzzyFinder
-  Plug 'junegunn/fzf.vim'
-  Plug 'tpope/vim-surround'                         " surroind stuff; cs'[<cr> / yss'
-  Plug 'tpope/vim-commentary'                       " comment out; gc[motion]
-  Plug 'tpope/vim-markdown'                         " markdown support
-  Plug 'tpope/vim-repeat'                           " enable plug repeat
-  Plug 'tpope/vim-fugitive'  		                    " Git wrapper.
-  Plug 'easymotion/vim-easymotion'                  " easymotion...
-  Plug 'vim-scripts/ReplaceWithRegister'            " replace with register
-  Plug 'vim-scripts/ReplaceWithSameIndentRegister'  " replace with register
-  Plug 'pangloss/vim-javascript'                    " javscritp syntax
-  Plug 'airblade/vim-gitgutter' 		                " Git diff in the 'gutter'
-  Plug 'christoomey/vim-tmux-navigator'             " tmux pane switch
-  Plug 'morhetz/gruvbox'                            " ColorScheme
-  Plug 'chriskempson/vim-tomorrow-theme'            " ColorScheme
-  Plug 'tomasiser/vim-code-dark'                    " ColorScheme
-  Plug 'altercation/vim-colors-solarized'           " ColorScheme
-  Plug 'townk/vim-autoclose'                        " autoclose ()[]{}''...
-  Plug 'vimwiki/vimwiki'                            " wiki tool
-  Plug 'posva/vim-vue'                              " vim support for vue
-  Plug 'dense-analysis/ale'                         " Linter runner
-  Plug 'airblade/vim-rooter'                        " auto root folder finder
-  " Plug 'dsawardekar/ember.vim'                      " ember support
-  Plug 'joukevandermaas/vim-ember-hbs'              " ember hbs
-  Plug 'metakirby5/codi.vim'
-  Plug 'mattn/emmet-vim'                            " emmet html
+  source $HOME/.vim/Plugins
 call plug#end()
 
 " ================ Plug: Color ===========================
 
-colorscheme gruvbox
-" colorscheme solarized
+" colorscheme gruvbox
+colorscheme solarized
 
 " ================ MacVim ===========================
 
@@ -61,7 +34,7 @@ colorscheme gruvbox
 " ================ Plug: Gitgutter ===========================
 
 " colors setup needs to be after colorscheme load
-" highlight clear SignColumn
+highlight clear SignColumn
 highlight GitGutterAdd ctermfg=green guifg=darkgreen
 highlight GitGutterChange ctermfg=yellow guifg=darkyellow
 highlight GitGutterDelete ctermfg=red guifg=darkred
@@ -80,8 +53,8 @@ let g:vimwiki_ext2syntax = {
 " highlight clear ALEErrorSign
 " highlight clear ALEWarningSign
 let g:ale_sign_column_always = 1
-let g:ale_sign_error = '❌'
-let g:ale_sign_warning = '⚠️'
+let g:ale_sign_error = 'x'
+let g:ale_sign_warning = '!'
 let g:ale_fixers = {
   \ 'javascript': ['eslint']
   \ }
@@ -102,12 +75,6 @@ let NERDTreeShowHidden=1
 
 " fzf hidden files  -   note: default command setup is in ~/.dotfiles/env
 let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
-
-let g:fzf_action = {
-    \ 'ctrl-q': 'wall | bdelete | Buffers',
-    \ 'ctrl-t': 'tab split',
-    \ 'ctrl-x': 'split',
-    \ 'ctrl-v': 'vsplit' }
 
 let g:fzf_colors =
 \ { 'fg':      ['fg', 'Normal'],
@@ -130,7 +97,7 @@ nnoremap <silent> <Leader><Enter>  :Files<CR>
 nnoremap <silent> <Leader>b        :Buffers<CR>
 nnoremap <silent> <Leader>L        :Lines<CR>
 nnoremap <silent> <Leader>A        :Ag<CR>
-nnoremap <silent> <c-f>            :Ag<CR>
+nnoremap <silent> <c-f>            :Lines<CR>
 nnoremap <silent> <Leader>f        :BLines<CR>
 nnoremap <silent> <Leader><Leader>f        :Ag<CR>
 
@@ -169,9 +136,10 @@ set encoding=utf-8
 set signcolumn=yes              " keep gutter visibile - good for jedi
 set wildmenu                    " show possible command-line completions
 set cursorline                  " highlight current line
-set foldmethod=syntax           "syntax highlighting items specify folds
-let javaScript_fold=1           "activate folding by JS syntax
-set foldlevelstart=99           "start file with all folds opened
+set foldmethod=indent           " fold according to indentation 'za' 'zR' 'zM'
+set foldnestmax=1
+" set nofoldenable                " disable folding
+set foldlevel=1
 set splitbelow splitright       " Splits open at the bottom and right
 
 " Cursor change in insert mode
@@ -244,13 +212,8 @@ set hidden  " Allow a buffer to stay unsaved in the background
 " ================ Maps ===========================
 " to find conflicting maps enter - :verbose map XXXX XXXX
 
- " disable ex mode prompt
-nmap Q <Nop>
-
-" disable lookup man page for word under cursor
-nmap K <Nop>
-
-nnoremap <leader>d :bd<cr>
+nmap Q <Nop> " disable ex mode prompt
+nmap K <Nop> " disable lookup man page for word under cursor
 
 " When autocomplete popup is open, enter just inserts selected item
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
@@ -266,7 +229,7 @@ nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 nnoremap \ :noh<cr>
 
 " Save
-nnoremap <leader>s :wa<cr>
+nnoremap <leader>s :update<cr>
 
 " Close window
 nnoremap <leader>q :q<CR>
@@ -309,6 +272,7 @@ nnoremap <silent> <Leader>- :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
 
 " edit .vimrc in a split
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
 
 " =========== Custom Status Line ==============
 
