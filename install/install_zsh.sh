@@ -1,7 +1,7 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 
 # install zsh
-sudo -k pacman -S zsh
+sudo -k apt-get install -y zsh
 
 # set zsh as login shell
 chsh -s $(which zsh)
