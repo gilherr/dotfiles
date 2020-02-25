@@ -47,6 +47,7 @@ call plug#end()
 " ================ Plug: Color ===========================
 
 colorscheme gruvbox
+set background=dark
 " colorscheme solarized
 
 " ================ MacVim ===========================
