@@ -1,7 +1,8 @@
-#basic alias
-alias ls='ls -h'
+alias aliasrc='vi $DOTFILES/alias'
+
+alias ls='ls --color=tty --group-directories-first'
 alias l='ls -l'
-alias ll='ls -lah'
+alias ll='ls -la'
 
 # Pretty print the path
 alias path="echo $PATH | tr -s ':' '\n'"
@@ -10,40 +11,20 @@ alias path="echo $PATH | tr -s ':' '\n'"
 alias vi=vim
 alias vimrc='vi ~/.vimrc'
 
-# Git
-alias gitlog='git log --oneline --graph --decorate --all'
-
-# Frontend
-alias festart='cd ~/repos/frontend && npm start'
+# zsh
+alias zshrc='vi ~/.zshrc'
 
 # Docker
 
-# missing '
-# alias stopkiq='docker stop $(docker ps | grep sidekiq | awk '{print $1}')"
+alias dps='docker ps -a --format "table {{.ID}}\t{{.Image}}"'
+alias dc='docker-compose'
 
-# Conjure
-alias conjure='conjure -v'
-alias cj='conjure'
-alias cjr='conjure refresh'
-alias cex="conjure exec -it -e COLUMNS="`tput cols`" -e LINES="`tput lines`""
-alias csw='conjure switch'
+# alias batchremove='docker-kill "cont1|cont2|cont3"'
+docker-kill(){
+	docker ps --format "table {{.ID}}\t{{.Image}}" | grep -E "($1)" | awk '{print $1}' | xargs -P 30  docker stop
+}
 
-alias clt='conjure logs -f tailor'
-alias cet='conjure errors -f tailor'
-alias crt='conjure raise tailor'
-alias cdt='conjure down tailor'
-alias cst='conjure status tailor'
-alias cswt='conjure switch tailor otto tailor-sidekiq'
-alias cmt='conjure unmonitor tailor && conjure monitor tailor'
-alias cdc='docker-compose -f ~/repos/tailor/.conjure/docker-compose_tailor.yml'
-
-alias cls='conjure logs -ft social-api'
-alias crs='conjure raise social-api'
-alias ces='conjure errors -ft social-api'
-alias cdcs='docker-compose -f ~/repos/social-api/.conjure/docker-compose_social-api.yml'
-
-alias nosocial='dk "pxf|muse-renderer|pxr|pxr-js|guggenheim|bazooka-api|pxe|social-networks-proxy|content-warehouse|autopilot|heapify"'
-#### Functions ####
+#### random functions ####
 
 # list and grep for the parameter
 lg() { ls -la | grep $1 -i; }
@@ -61,18 +42,7 @@ dot() {
     }
 
 
-front()  { cd ~/repos/frontend; "$@" }
-tailor() { cd ~/repos/tailor;   "$@" }
-pony()   { cd ~/repos/pony-api; "$@" }
-pxf()    { cd ~/repos/pxf;      "$@" }
-
-dk(){
-	docker ps --format "table {{.ID}}\t{{.Image}}" | grep -E "($1)" | awk '{print $1}' | xargs -P 30  docker stop
-}
-
-dps() {
-  docker ps -a --format "table {{.ID}}\t{{.Image}}"
-}
+# runinfolder()  { cd ~/repos/somefolder; "$@" }
 
 # Codi
 # Usage: codi [filetype] [filename]
@@ -87,3 +57,6 @@ codi() {
     hi NonText ctermfg=0 |\
     Codi $syntax" "$@"
 }
+
+# run local node bins
+function npm-do { (PATH=$(npm bin):$PATH; eval $@;) } 
