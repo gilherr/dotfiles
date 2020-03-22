@@ -1,0 +1,3 @@
+" The-NERD-tree mappings
+nnoremap <F2> :NERDTreeToggle<CR>
+let NERDTreeShowHidden=1
