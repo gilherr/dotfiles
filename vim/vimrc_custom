@@ -1,7 +1,7 @@
 let $MYVIMRC = "$DOTFILES/vim/vimrc_custom"
 
 call plug#begin('~/.vim/plugged')
-source $DOTFILES/Plugins
+source $DOTFILES/vim/Plugins
 call plug#end()
 
 for f in split(glob($DOTFILES.'/vim/plugin_settings/*.vim'), '\n')
@@ -11,7 +11,6 @@ endfor
 source $DOTFILES/vim/filetype.vim
 source $DOTFILES/vim/general.vim
 source $DOTFILES/vim/mappings.vim
-
 source $DOTFILES/vim/abbr.vim
 source $DOTFILES/vim/color.vim
 
