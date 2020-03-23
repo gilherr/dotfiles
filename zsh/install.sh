@@ -4,7 +4,7 @@
 sed -i "s,export DOTFILES=.*,export DOTFILES=$DOTFILES," $DOTFILES/zsh/zshrc
 
 # install zsh and vim
-apt install -y zsh
+sudo -k apt install -y zsh
 
 # install oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended

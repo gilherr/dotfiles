@@ -1,5 +1,5 @@
 " General colors
-colorscheme desert    " use this color scheme
+colorscheme gruvbox    " use this color scheme
 set background=dark   " adapt colors for background
 
 hi clear SpellBad

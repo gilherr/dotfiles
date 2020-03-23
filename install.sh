@@ -8,9 +8,9 @@ else
       echo "Found dotfiles path at: $DOTFILES"
 fi
 
-apt update && apt install -y curl git
+sudo apt update && apt install -y curl git
 
 $DOTFILES/zsh/install.sh
 $DOTFILES/vim/install.sh
 
-echo "Done."
+echo Done.
