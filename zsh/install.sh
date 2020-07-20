@@ -4,11 +4,11 @@
 sed -i "s,export DOTFILES=.*,export DOTFILES=$DOTFILES," $DOTFILES/zsh/zshrc
 
 # install zsh and vim
-sudo -k apt install -y zsh
+sudo apt install -y zsh
 
 # install oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-ln -s $DOTFILES/zsh/custom-robby.zsh-theme $ZSH_CUSTOM/themes
+zsh -i -c 'ln -s $DOTFILES/zsh/custom-robby.zsh-theme $ZSH_CUSTOM/themes' 2>/dev/null
 
 # set zsh as login shell
 chsh -s $(which zsh)
