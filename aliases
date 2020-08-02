@@ -19,6 +19,9 @@ alias zshrc='vi ~/.zshrc'
 alias dps='docker ps -a --format "table {{.ID}}\t{{.Image}}"'
 alias dc='docker-compose'
 
+# python for Windows-Terminal
+alias py='python3'
+
 # alias batchremove='docker-kill "cont1|cont2|cont3"'
 docker-kill(){
 	docker ps --format "table {{.ID}}\t{{.Image}}" | grep -E "($1)" | awk '{print $1}' | xargs -P 30  docker stop
@@ -59,4 +62,4 @@ codi() {
 }
 
 # run local node bins
-function npm-do { (PATH=$(npm bin):$PATH; eval $@;) } 
+function npm-do { (PATH=$(npm bin):$PATH; eval $@;) }
