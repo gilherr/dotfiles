@@ -17,7 +17,9 @@ source $ZSH/oh-my-zsh.sh
 
 # bindkey -v                                        # make it vim like
 bindkey '^ ' autosuggest-execute                    # ctrl+space
-# bindkey '' autosuggest-accept                     # ctrl+space
+# bindkey '^l' autosuggest-accept                     # ctrl+space
+bindkey '^l' forward-word
+bindkey '^h' backward-kill-word
 # bindkey    "^[[3~"          delete-char
 # bindkey    "^[3;5~"         delete-char
 # setxkbmap -option caps:escape                     # turn caps into esc
