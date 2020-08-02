@@ -25,7 +25,7 @@ bindkey '^h' backward-kill-word
 # setxkbmap -option caps:escape                     # turn caps into esc
 # ---------------------- Sources --------------------------
 
-source $DOTFILES/aliases
+source $DOTFILES/zsh/aliases
 source $DOTFILES/env
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
