@@ -5,7 +5,7 @@ alias l='ls -l'
 alias ll='ls -la'
 
 # Pretty print the path
-alias path="echo $PATH | tr -s ':' '\n'"
+alias fzpath='printf "%s\n" $path | fzf'
 
 # Use vim, not vi
 alias vi=vim
@@ -18,6 +18,8 @@ alias zshrc='vi ~/.zshrc'
 
 alias dps='docker ps -a --format "table {{.ID}}\t{{.Image}}"'
 alias dc='docker-compose'
+alias dv='docker volume ls'
+alias dvrm='docker volume rm $(docker volume ls -q)'
 
 # python for Windows-Terminal
 alias py='python3'
@@ -63,3 +65,5 @@ codi() {
 
 # run local node bins
 function npm-do { (PATH=$(npm bin):$PATH; eval $@;) }
+
+view-json-log(){ tail -f $1 | jq --unbuffered -r '.timestamp + "\t" + .level + "\t" + .message'  }
