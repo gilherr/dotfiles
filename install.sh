@@ -12,8 +12,8 @@ else
       echo "Found dotfiles path at: $DOTFILES"
 fi
 
-color_echo $green "Installing curl and git"
-sudo apt update && apt install -y curl git
+color_echo $green "Install and setup ubuntu apps"
+$DOTFILES/ubuntu/install.sh
 
 color_echo $green "Running zsh installer"
 $DOTFILES/zsh/install.sh
