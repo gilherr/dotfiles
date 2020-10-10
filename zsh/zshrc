@@ -15,14 +15,39 @@ source $ZSH/oh-my-zsh.sh
 
 # ---------------------- Key Bindings --------------------------
 
-# bindkey -v                                        # make it vim like
-# bindkey '^ ' autosuggest-accept                     # ctrl+space
-bindkey '^ ' autosuggest-execute                    # ctrl+space
-bindkey '^l' forward-word
-bindkey '^h' backward-kill-word
+bindkey -v                           # make it vim like
+bindkey '^ ' autosuggest-execute     # ctrl+space
+bindkey '^l' forward-char
+bindkey '^h' backward-char
 bindkey '^k' up-line-or-search
 bindkey '^j' down-line-or-search
+
+bindkey '^x^e' edit-command-line
+
+# zsh
+# ------------
+# autosuggest-accept
+# autosuggest-execute
+# up-line-or-search
+# down-line-or-search
+
+# Movement
+# ------------
+# forward-char
+# backward-char
+# forward-word
+# backward-word
+
+# Move and Kill
+# ------------
+# kill-word
+# backward-kill-word
+# delete-char
+# backward-delete-char
+
 # setxkbmap -option caps:escape                     # turn caps into esc
+
+# http://zsh.sourceforge.net/Doc/Release/Zsh-Line-Editor.html
 
 # ---------------------- Sources --------------------------
 
