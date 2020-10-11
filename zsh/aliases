@@ -23,6 +23,14 @@ alias dvrm='docker volume rm $(docker volume ls -q)'
 # Git
 alias fzgst="git status -s | fzf --no-sort --reverse --preview 'git diff --color=always {+2}'"
 
+# python
+function pip-install-save {
+    for pkg in "$@" 
+    do
+        pip install $pkg && pip freeze | grep $pkg >> requirements.txt
+    done
+}
+
 #### random functions ####
 
 # batch remove='docker-kill "cont1|cont2|cont3"'
