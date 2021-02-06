@@ -24,10 +24,12 @@ alias dvrm='docker volume rm $(docker volume ls -q)'
 alias fzgst="git status -s | fzf --no-sort --reverse --preview 'git diff --color=always {+2}'"
 
 # python
+alias py=python
+alias dj=./manage.py
 function pip-install-save {
-    for pkg in "$@" 
+    for pkg in "$@"
     do
-        pip install $pkg && pip freeze | grep $pkg >> requirements.txt
+        pip install $pkg && pip freeze | grep -i $pkg >> requirements.txt
     done
 }
 
