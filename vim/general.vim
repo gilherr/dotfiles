@@ -1,32 +1,34 @@
 
 " Behavior
 " =======
-set nocompatible		        " disable vi backwards compatibilty
+set nocompatible		                " disable vi backwards compatibilty
 set backspace=indent,eol,start 	  	" fixes backspace & del behavior
 set timeoutlen=1000 ttimeoutlen=0 	" No delay for ESC
 let mapleader = " "
 nmap Q <Nop> " disable ex mode prompt
 nmap K <Nop> " disable lookup man page for word under cursor
+
 if has("mouse_sgr")
     set ttymouse=sgr " fixes mouse selection beyond column 222 in xterm
 else
     set ttymouse=xterm2
 end
+
 set autoread 	" Automatically reload files that have been changed outside of Vim
 set confirm 	" confirm before exiting if files have not been saved
-set hidden 	" Hide buffers when they are abandoned
+set hidden 	  " Hide buffers when they are abandoned
 
 " UI
 " ===
-set number				" show line numbers (disable with nonumber)
-set mouse=a				" enable mouse (disble with mouse= )
+set number	    			" show line numbers (disable with nonumber)
+set mouse=a	    			" enable mouse (disble with mouse= )
 set laststatus=2
-set encoding=utf-8 " Necessary to show Unicode glyphs
+set encoding=utf-8    " Necessary to show Unicode glyphs
 set statusline=%f     " show relative path in status line
 set completeopt=longest,menuone " doesn't select first item; insert longest common text; always show menu
 set sidescroll=1
-set t_Co=256 " 256 colors
-set t_ut= " disable Background Color Erase
+set t_Co=256          " 256 colors
+set t_ut=             " disable Background Color Erase
 
 " first tab completed to the longest common match, or full match,
 " second tab completed to show list of all matches,
@@ -41,16 +43,16 @@ set scrolloff=5
 
 " Editing
 " =======
-set tabstop=2 " how many columns is a tab space
-set shiftwidth=2 " indentation with the << and >> mappings
-set softtabstop=2 " columns to insert when pressing tab in insert mode
-set expandtab " converts tabs to spaces
-set nowrap " don't use word wrap
-set textwidth=0 " if word wrap is enabled, this is the max character length
-set indentkeys-=<:> " Don't indent after typing a colon (annoying!!!)
-set nospell " Spell checker defaults to off
+set tabstop=2         " how many columns is a tab space
+set shiftwidth=2      " indentation with the << and >> mappings
+set softtabstop=2     " columns to insert when pressing tab in insert mode
+set expandtab         " converts tabs to spaces
+set nowrap            " don't use word wrap
+set textwidth=0       " if word wrap is enabled, this is the max character length
+set indentkeys-=<:>   " Don't indent after typing a colon (annoying!!!)
+set nospell           " Spell checker defaults to off
 set spellfile=~/.vim/myspell.utf-8.add
-set cursorline                  " highlight current line
+set cursorline        " highlight current line
 
 autocmd BufWritePre * :call <SID>StripTrailingWhitespaces() " Remove any and all trailing whitespace
 function! <SID>StripTrailingWhitespaces()
@@ -86,12 +88,21 @@ set directory=~/.vim/swp//
 
 set undofile
 
-" Clipboard 
+" Clipboard
 " =========
 
 " test if clopboard is available with :echo has('clipboard')
 " if you get 0 - install vim-gtk (ubuntu) or gvim (arch)
 set clipboard=unnamedplus       " Linux clipboard as default register
+
+" WSL yank support (windows 10 with windows-terminal)
+let s:clip = '/mnt/c/Windows/System32/clip.exe'  " change this path according to your mount point
+if executable(s:clip)
+    augroup WSLYank
+        autocmd!
+        autocmd TextYankPost * if v:event.operator ==# 'y' | call system(s:clip, @0) | endif
+    augroup END
+endif
 
 " Folding
 " ======
@@ -101,17 +112,18 @@ set foldlevel=1
 
 " Search
 " ======
-set ignorecase			        " case insensitive search
-set smartcase			        " case sensitive if uppercase
-set incsearch			        " move the cursor to first result
+set ignorecase	" case insensitive search
+set smartcase		" case sensitive if uppercase
+set incsearch		" move the cursor to first result
 set showmatch 	" Show matching brackets.
+set hlsearch    " highlight all search matches
 
 " Backups
 " =======
 set nobackup
 set noswapfile
 
-" Custom Status Line 
+" Custom Status Line
 " ==================
 
 function! GitBranch()
@@ -151,7 +163,7 @@ set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
 set statusline+=\ [%{&fileformat}\]
 set statusline+=\ %p%%
 set statusline+=\ [%3l:%3c]
-set statusline+=\ 
+set statusline+=\
 
 " Ensure syntax highlighting & filetype detecton are turned on
 syntax on
