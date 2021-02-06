@@ -1,28 +1,42 @@
 export ZSH=~/.oh-my-zsh
 export DOTFILES=/home/giler/dotfiles
 
-ZSH_THEME="custom-robby"
+# ZSH_THEME="custom-robby"
+ZSH_THEME="robbyrussell"
 
 plugins=(
     git
     docker
     docker-compose
+    kubectl
+    terraform
     zsh-autosuggestions
     zsh-syntax-highlighting
 )
-
 source $ZSH/oh-my-zsh.sh
+
+# ---------------------- zsh-autosuggestions --------------------------
+
+ZSH_AUTOSUGGEST_ACCEPT_WIDGETS=("${(@)ZSH_AUTOSUGGEST_ACCEPT_WIDGETS:#vi-forward-char}")
+ZSH_AUTOSUGGEST_ACCEPT_WIDGETS=("${(@)ZSH_AUTOSUGGEST_ACCEPT_WIDGETS:#forward-char}")
+ZSH_AUTOSUGGEST_PARTIAL_ACCEPT_WIDGETS+="forward-char"
+ZSH_AUTOSUGGEST_PARTIAL_ACCEPT_WIDGETS+="vi-forward-char"
 
 # ---------------------- Key Bindings --------------------------
 
 bindkey -v                           # make it vim like
 bindkey '^ ' autosuggest-execute     # ctrl+space
 bindkey '^l' forward-char
+bindkey '^w' forward-word
 bindkey '^h' backward-char
 bindkey '^k' up-line-or-search
 bindkey '^j' down-line-or-search
 
-bindkey '^x^e' edit-command-line
+bindkey '^x^e' edit-command-line      # ctrl+x,ctrl+e
+bindkey '.'  insert-last-word       # alt+.
+bindkey ''   backward-kill-word     # ctrl+backspace
+bindkey ''  clear-screen            # ctrl+/
+
 
 # zsh
 # ------------
@@ -55,19 +69,28 @@ source $DOTFILES/zsh/aliases
 source $DOTFILES/env
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# ---------------- Path update ---------------
+# ---------------- Path update -----------------
 
 path+=$HOME/.local/bin
 
-# ---------------- Less config ---------------
+# ---------------- Less config -----------------
 
 export LESS="$LESS -FRXK"                 # dont be pager when text fit
 
-# ----------------- LS Colors ------------------------
+# ----------------- LS Colors ------------------
 
 unset LSCOLORS
 export CLICOLOR=1
 
 # ----------------- NVM ------------------------
+
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm ]
+
+# ----------------- Golang ---------------------
+
+export GOROOT=/usr/local/go
+export GOPATH=$HOME/golib
+
+path+=$GOROOT/bin
+path+=$GOPATH/bin
