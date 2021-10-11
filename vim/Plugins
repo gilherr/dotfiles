@@ -1,20 +1,21 @@
-Plug 'ekalinin/Dockerfile.vim'
+" Plug 'ekalinin/Dockerfile.vim'
 Plug 'scrooloose/nerdtree'                        " File Browser
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } 
+" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'tpope/vim-surround'                         " surroind stuff; cs'[<cr> / yss'
 Plug 'tpope/vim-commentary'                       " comment out; gc[motion]
 Plug 'tpope/vim-repeat'                           " enable plug repeat
 Plug 'tpope/vim-fugitive'  		                  " Git wrapper.
 Plug 'vim-scripts/ReplaceWithRegister'            " replace with register
 Plug 'vim-scripts/ReplaceWithSameIndentRegister'  " replace with register
-Plug 'pangloss/vim-javascript'                    " javscritp syntax
+" Plug 'pangloss/vim-javascript'                    " javscritp syntax
 Plug 'airblade/vim-gitgutter' 		              " Git diff in the 'gutter'
 Plug 'townk/vim-autoclose'                        " autoclose ()[]{}''...
-Plug 'vimwiki/vimwiki'                            " wiki tool
-Plug 'dense-analysis/ale'                         " Linter runner
-Plug 'airblade/vim-rooter'                        " auto root folder finder
-Plug 'metakirby5/codi.vim'                        " repl
+" Plug 'vimwiki/vimwiki'                            " wiki tool
+" Plug 'dense-analysis/ale'                         " Linter runner
+" Plug 'airblade/vim-rooter'                        " auto root folder finder
+" Plug 'metakirby5/codi.vim'                        " repl
 Plug 'morhetz/gruvbox'                            " ColorScheme
 Plug 'chriskempson/vim-tomorrow-theme'            " ColorScheme
 Plug 'tomasiser/vim-code-dark'                    " ColorScheme
 Plug 'altercation/vim-colors-solarized'           " ColorScheme
+" Plug 'klen/python-mode'

@@ -135,18 +135,18 @@ function! StatuslineGit()
   return strlen(l:branchname) > 0?'  '.l:branchname.' ':''
 endfunction
 
-function! LinterStatus() abort
-  let l:counts = ale#statusline#Count(bufnr(''))
-
-  let l:all_errors = l:counts.error + l:counts.style_error
-  let l:all_non_errors = l:counts.total - l:all_errors
-
-  return l:counts.total == 0 ? '✅' : printf(
-        \   '%dW %dE ❌',
-        \   all_non_errors,
-        \   all_errors
-        \)
-endfunction
+" function! LinterStatus() abort
+"   let l:counts = ale#statusline#Count(bufnr(''))
+" 
+"   let l:all_errors = l:counts.error + l:counts.style_error
+"   let l:all_non_errors = l:counts.total - l:all_errors
+" 
+"   return l:counts.total == 0 ? '✅' : printf(
+"         \   '%dW %dE ❌',
+"         \   all_non_errors,
+"         \   all_errors
+"         \)
+" endfunction
 
 set laststatus=2
 set statusline=
@@ -156,7 +156,7 @@ set statusline+=%#LineNr#
 set statusline+=\ %F
 set statusline+=%m\
 set statusline+=%=
-set statusline+=\ %{LinterStatus()}
+" set statusline+=\ %{LinterStatus()}
 set statusline+=%#CursorColumn#
 set statusline+=\ %y
 set statusline+=\ %{&fileencoding?&fileencoding:&encoding}

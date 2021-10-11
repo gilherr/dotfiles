@@ -1,0 +1,29 @@
+{
+    "pythonlogger": {
+        "title": "Python logger format",
+        "description": "Log format used by python logger class",
+        "url": "",
+        "regex": {
+            "main" : {
+                "pattern": "^(?<timestamp>\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2},\\d{3})\\s+(?<level>\\w+)\\s+(?<module>\\w+)\\s+(?<body>.*)$"
+            }
+        },
+        "level-field": "level",
+        "level": {
+            "critical": "CRITICAL",
+            "error": "ERROR",
+            "warning": "WARNING",
+            "info": "INFO",
+            "debug": "DEBUG"
+        },
+        "value": {
+            "level": { "kind" : "string", "identifier" : true },
+            "module": { "kind" : "string", "identifier" : true }
+        },
+        "sample": [
+            {
+                "line": "2021-08-16 05:25:13,382 WARNING  signals         there is no event_log_shadow and security_event_log mails list and email_sent event has fired."
+            }
+        ]
+    }
+}

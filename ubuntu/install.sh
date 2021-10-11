@@ -1,10 +1,9 @@
 #!/usr/bin/env bash
 
 sudo apt update && sudo apt install -y \
-    curl\
-    git\
     bat\
-    fd-find 
+    fd-find\
+    tldr
 
 # bat:      cat with syntax highlight (fzf dependency)
 # fd-find:  file searcher (fzf dependency)

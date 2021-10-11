@@ -1,7 +1,7 @@
 # Install vim
 sudo -k apt install -y vim || true
 
-# Download vim-plug & creare appropriate folders
+# Download vim-plug & create appropriate folders
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
