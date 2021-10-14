@@ -2,10 +2,10 @@
 " fzf hidden files  -   note: default command setup is in ~/.dotfiles/env
 " let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
 
-let g:fzf_action = {
-    \ 'ctrl-t': 'tab split',
-    \ 'ctrl-x': 'split',
-    \ 'ctrl-v': 'vsplit' }
+"let g:fzf_action = {
+"    \ 'ctrl-t': 'tab split',
+"    \ 'ctrl-x': 'split',
+"    \ 'ctrl-v': 'vsplit' }
 
 " let g:fzf_colors =
 " \ { 'fg':      ['fg', 'Normal'],

@@ -110,3 +110,9 @@ nnoremap <Leader>r :%s/\<<C-r><C-w>\>//gc<Left><Left><Left>
 " resize buffers quickly
 nnoremap <silent> <Leader>= :exe "vertical resize " . (winwidth(0) * 3/2)<CR>
 nnoremap <silent> <Leader>- :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
+
+" NERDtree
+silent! map <F3> :NERDTreeFind<CR>
+let g:NERDTreeMapActivateNode="<F3>"
+let g:NERDTreeMapPreview="<F4>"
+
