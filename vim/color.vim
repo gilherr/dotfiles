@@ -1,7 +1,7 @@
 " " General colors
-" colorscheme gruvbox
-colorscheme codedark
-" set background=dark   " adapt colors for background
+colorscheme gruvbox
+" colorscheme codedark
+set background=dark   " adapt colors for background
 
 " hi clear SpellBad
 " hi SpellBad cterm=undercurl ctermfg=red

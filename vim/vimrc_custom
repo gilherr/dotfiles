@@ -13,4 +13,4 @@ source $DOTFILES/vim/general.vim
 source $DOTFILES/vim/mappings.vim
 source $DOTFILES/vim/abbr.vim
 source $DOTFILES/vim/color.vim
-
+source $DOTFILES/vim/plugin_settings/fzf.vim
