@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
 sudo apt update && sudo apt install -y \
-    tldr
+    tldr \
+    lnav
 
 # for ubuntu 18.04
 wget -P /tmp https://github.com/sharkdp/bat/releases/download/v0.18.3/bat_0.18.3_amd64.deb
@@ -15,5 +16,4 @@ sudo dpkg -i /tmp/fd_8.2.1_amd64.deb
 
 # setup soft links
 mkdir -p ~/.local/bin
-ln -s /usr/bin/batcat ~/.local/bin/bat
-ln -s /usr/bin/fdfind ~/.local/bin/fd
+ln -s $DOTFILES/lnav/formats/installed ~/.lnav/formats/installed
