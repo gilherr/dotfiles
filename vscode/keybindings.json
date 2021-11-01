@@ -90,5 +90,54 @@
     {
         "key": "ctrl+alt+v",
         "command": "toggleVim"
+    },
+    {
+        "key": "shift+alt+r",
+        "command": "-remote-wsl.revealInExplorer",
+        "when": "editorFocus && remoteName == 'wsl'"
+    },
+    {
+        "key": "f3",
+        "command": "workbench.files.action.showActiveFileInExplorer",
+        "when": "editorFocus"
+    },
+    {
+        "key": "f3",
+        "command": "-editor.action.nextMatchFindAction",
+        "when": "editorFocus"
+    },
+    {
+        "key": "f3",
+        "command": "-workbench.action.terminal.findNext",
+        "when": "terminalFindFocused && terminalProcessSupported || terminalFocus && terminalProcessSupported"
+    },
+    {
+        "key": "f3",
+        "command": "workbench.action.focusActiveEditorGroup",
+        "when": "explorerViewletFocus"
+    },
+    {
+        "key": "ctrl+shift+e",
+        "command": "-workbench.view.explorer",
+        "when": "viewContainer.workbench.view.explorer.enabled"
+    },
+    {
+        "key": "alt+1",
+        "command": "workbench.view.explorer",
+        "when": "viewContainer.workbench.view.explorer.enabled"
+    },
+    {
+        "key": "alt+2",
+        "command": "workbench.action.findInFiles"
+    },
+    {
+        "key": "alt+3",
+        "command": "workbench.view.scm",
+        "when": "workbench.scm.active"
+    },
+    {
+        "key": "alt+4",
+        "command": "workbench.view.debug",
+        "when": "viewContainer.workbench.view.debug.enabled"
     }
 ]
