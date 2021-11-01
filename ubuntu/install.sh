@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 
 sudo apt update && sudo apt install -y \
-    tldr \
-    lnav
+    lnav \
+    tree
+
+python3 -m pip install tldr
 
 # for ubuntu 18.04
 wget -P /tmp https://github.com/sharkdp/bat/releases/download/v0.18.3/bat_0.18.3_amd64.deb
