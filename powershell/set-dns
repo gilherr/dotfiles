@@ -1,0 +1,4 @@
+Get-NetIPConfiguration
+Set-DnsClientServerAddress -InterfaceIndex 26 -ServerAddresses 10.70.50.41, 8.8.8.8
+Set-DnsClientServerAddress -InterfaceIndex 26 -ResetServerAddresses
+
