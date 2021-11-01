@@ -1,31 +1,24 @@
 {
-    "gitlens.currentLine.enabled": false,
     "gitlens.hovers.currentLine.over": "line",
-    "gitlens.codeLens.enabled": false,
-    "gitlens.statusBar.enabled": false,
     "gitlens.defaultDateShortFormat": "YYYY.MM.D",
     "gitlens.defaultTimeFormat": null,
     "gitlens.blame.format": "${date} ${author|15}",
     "gitlens.blame.dateFormat": "YY.MM.DD",
     "editor.fontFamily": "'Ubuntu Mono', Consolas, 'Courier New', monospace",
     "terminal.integrated.fontSize": 16,
-    "python.formatting.provider": "yapf",
 
     "editor.fontSize": 16,
     "editor.tabCompletion": "off",
     "editor.rulers": [80],
     "editor.unfoldOnClickAfterEndOfLine": true,
-    "window.zoomLevel": 0,
     "debug.allowBreakpointsEverywhere": true,
     "files.eol": "\n",
-    "files.trimFinalNewlines": true,
     "extensions.ignoreRecommendations": false,
     "workbench.startupEditor": "newUntitledFile",
     "workbench.activityBar.visible": true,
     "terminal.external.windowsExec": "C:\\Users\\gil.herr\\AppData\\Local\\Microsoft\\WindowsApps\\wt.exe",
     "editor.dragAndDrop": false,
     "editor.renderWhitespace": "all",
-    "editor.minimap.enabled": false,
     "editor.codeLens": false,
     "explorer.autoReveal": false,
     "workbench.editorAssociations": {
@@ -50,6 +43,7 @@
         "<C-c>": false,
         "<C-x>": false,
         "<C-b>": false,
+        "<C-v>": false,
     },
     "vim.normalModeKeyBindingsNonRecursive": [
         { // remove search highliht
@@ -166,5 +160,21 @@
             "before": ["<c-j>"],
             "after": ["<c-o>", "o"]
         }
+    ],
+    "gitlens.codeLens.enabled": false,
+    "gitlens.currentLine.enabled": false,
+    "gitlens.hovers.currentLine.details": false,
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "files.exclude": {
+        "**/.classpath": true,
+        "**/.project": true,
+        "**/.settings": true,
+        "**/.factorypath": true
+    },
+    "files.trimTrailingWhitespace": true,
+    "cSpell.showCommandsInEditorContextMenu": false,
+    "cSpell.userWords": [
+        "sbom"
     ]
 }

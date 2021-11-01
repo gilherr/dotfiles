@@ -40,7 +40,7 @@
         "when": "editorTextFocus"
     },
     {
-        "key": "alt+d",
+        "key": "alt+n",
         "command": "editor.action.addSelectionToNextFindMatch",
         "when": "editorFocus"
     },
@@ -139,5 +139,30 @@
         "key": "alt+4",
         "command": "workbench.view.debug",
         "when": "viewContainer.workbench.view.debug.enabled"
+    },
+    {
+        "key": "ctrl+alt+z",
+        "command": "git.revertSelectedRanges",
+        "when": "editorFocus"
+    },
+    {
+        "key": "ctrl+k ctrl+r",
+        "command": "-git.revertSelectedRanges",
+        "when": "isInDiffEditor"
+    },
+    {
+        "key": "f4",
+        "command": "-references-view.next",
+        "when": "reference-list.hasResult && references-view.canNavigate"
+    },
+    {
+        "key": "f4",
+        "command": "editor.debug.action.selectionToWatch",
+        "when": "inDebugMode"
+    },
+    {
+        "key": "ctrl+shift+m",
+        "command": "-workbench.actions.view.problems",
+        "when": "workbench.panel.markers.view.active"
     }
 ]
