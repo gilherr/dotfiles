@@ -164,10 +164,5 @@
         "key": "ctrl+shift+m",
         "command": "-workbench.actions.view.problems",
         "when": "workbench.panel.markers.view.active"
-    },
-    {
-        "key": "alt+1",
-        "command": "workbench.action.closeSidebar",
-        "when": "explorerViewletFocus"
     }
 ]
