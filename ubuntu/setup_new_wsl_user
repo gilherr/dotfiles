@@ -25,6 +25,7 @@ su $USERNAME
 cd
 ln -s "/mnt/c/Users/gil.herr/AppData/Local/Programs/Microsoft VS Code/bin/code" $HOME/.local/bin/code  # put vscode in path
 ln -s "/mnt/c/Windows/explorer.exe" $HOME/.local/bin/explorer
+ln -s "/mnt/c/WINDOWS/system32/clip.exe" $HOME/.local/bin/clip
 git clone https://github.com/gilherr/dotfiles.git
 cd dotfiles
 export DOTFILES=$(pwd)

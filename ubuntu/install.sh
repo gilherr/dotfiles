@@ -2,7 +2,8 @@
 
 sudo apt update && sudo apt install -y \
     lnav \
-    tree
+    tree \
+    xclip
 
 python3 -m pip install tldr
 
