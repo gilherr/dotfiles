@@ -164,5 +164,54 @@
         "key": "ctrl+shift+m",
         "command": "-workbench.actions.view.problems",
         "when": "workbench.panel.markers.view.active"
+    },
+    {
+        "key": "alt+1",
+        "command": "workbench.action.closeSidebar",
+        "when": "explorerViewletFocus"
+    },
+    {
+        "key": "ctrl+shift+alt+left",
+        "command": "-cursorColumnSelectLeft",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "ctrl+shift+alt+right",
+        "command": "-cursorColumnSelectRight",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "ctrl+shift+alt+down",
+        "command": "workbench.action.positionPanelBottom"
+    },
+    {
+        "key": "ctrl+shift+alt+down",
+        "command": "-cursorColumnSelectDown",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "ctrl+shift+alt+up",
+        "command": "workbench.action.terminal.resizePaneUp"
+    },
+    {
+        "key": "ctrl+shift+alt+down",
+        "command": "workbench.action.terminal.resizePaneDown"
+    },
+    {
+        "key": "ctrl+shift+w",
+        "command": "-workbench.action.closeWindow"
+    },
+    {
+        "key": "ctrl+shift+w",
+        "command": "workbench.action.closeActiveEditor"
+    },
+    {
+        "key": "ctrl+w",
+        "command": "-workbench.action.closeActiveEditor"
+    },
+    {
+        "key": "ctrl+k ctrl+alt+s",
+        "command": "-git.stageSelectedRanges",
+        "when": "isInDiffEditor"
     }
 ]

@@ -15,12 +15,12 @@
     "files.eol": "\n",
     "extensions.ignoreRecommendations": false,
     "workbench.startupEditor": "newUntitledFile",
-    "workbench.activityBar.visible": true,
     "terminal.external.windowsExec": "C:\\Users\\gil.herr\\AppData\\Local\\Microsoft\\WindowsApps\\wt.exe",
     "editor.dragAndDrop": false,
     "editor.renderWhitespace": "all",
-    "editor.codeLens": false,
+    // "editor.codeLens": false,
     "explorer.autoReveal": false,
+    // "editor.formatOnPaste": true,
     "workbench.editorAssociations": {
         "*.ipynb": "jupyter.notebook.ipynb"
     },
@@ -28,6 +28,7 @@
     // Vim Stuff
     "vim.leader": "<space>",
     "vim.useSystemClipboard": true,
+    "vim.highlightedyank.enable": true,
     "vim.replaceWithRegister": true,
     "vim.useCtrlKeys": true,
     "vim.hlsearch": true,
@@ -43,129 +44,49 @@
         "<C-c>": false,
         "<C-x>": false,
         "<C-b>": false,
-        "<C-v>": false,
+        "<C-v>": false
     },
     "vim.normalModeKeyBindingsNonRecursive": [
-        { // remove search highliht
-            "before": ["\\"],
-            "commands": [":nohl"]
-        },
-        {
-            "before": ["<leader>","l"],
-            "commands": [":tabnext"]
-        },
-        {
-            "before": ["<leader>","h"],
-            "commands": [":tabprevious"]
-        },
-        {
-            "before": ["<leader>","q"],
-            "commands": [":q"]
-        },
-        {
-            "before": ["<leader>","<TAB>"],
-            "commands": ["workbench.action.focusNextGroup"]
-        },
-        {
-            "before": ["<leader>","z"],
-            "commands": ["workbench.action.toggleEditorWidths"]
-        },
-        {
-            "before": ["<leader>","s"],
-            "commands": [":wa"]
-        },
-        {
-            "before": ["<leader>","o"],
-            "after": ["o","esc"]
-        },
-        {
-            "before": ["<leader>","O"],
-            "after": ["O","esc"]
-        },
-        { // highlight current line w\o eol
-            "before": ["<leader>","v"],
-            "after": ["^","v","g","_"]  
-        },
-        { // change current line w\o eol
-            "before": ["<leader>","c"],
-            "after": ["^","C"]
-        },
-        { // delete current line w\o eol
-            "before": ["<leader>","d"],
-            "after": ["^","D"]
-        },
-        { // fold
-            "before": ["<leader>","k"],
-            "after": ["z","c"]
-        },
-        { // unfold
-            "before": ["<leader>","j"],
-            "after": ["z","o"]
-        },
-        { // fold all to level 1
-            "before": ["<leader>","K"],
-            "commands": ["editor.foldLevel1"]
-        },
-        { // unfold all
-            "before": ["<leader>","J"],
-            "commands": ["editor.unfoldAll"]
-        },
-        { // delete "a word" under curser
-            "before": ["<leader>","x"],
-            "after": ["d","a","w"]
-        },
-        { // easymotion to beggining of all words
-            "before": ["<leader>","m"],
-            "after": ["<leader>","<leader>","<leader>","b","d","w"]
-        },
-        { // easymotion to input character
-            "before": ["<leader>","f"],
-            "after": ["<leader>","<leader>","s"]
-        }
+        { "before": ["\\"], "commands": [":nohl"] },                        // remove search highlight
+        { "before": ["<leader>","l"], "commands": [":tabnext"] },
+        { "before": ["]","]"], "commands": ["workbench.action.editor.nextChange", "workbench.action.compareEditor.nextChange"] },
+        { "before": ["[","["], "commands": ["workbench.action.editor.previousChange", "workbench.action.compareEditor.previousChange"] },
+        { "before": ["<leader>","h"], "commands": [":tabprevious"] },
+        { "before": ["<leader>","q"], "commands": [":q"] },
+        { "before": ["<leader>","<TAB>"], "commands": ["workbench.action.focusNextGroup"] },
+        { "before": ["<leader>","z"], "commands": ["workbench.action.toggleEditorWidths"] },
+        { "before": ["<leader>","o"], "after": ["o","esc"] },
+        { "before": ["<leader>","O"], "after": ["O","esc"] },
+        { "before": ["<leader>","v"], "after": ["^","v","g","_"] },         // highlight current line w\o eol
+        { "before": ["<leader>","c"], "after": ["^","C"] },                 // change current line w\o eol
+        { "before": ["<leader>","d"], "after": ["^","D"] },                 // delete current line w\o eol
+        { "before": ["<leader>","k"], "after": ["z","c"] },                 // fold
+        { "before": ["<leader>","j"], "after": ["z","o"] },                 // unfold
+        { "before": ["<leader>","K"], "commands": ["editor.foldLevel1"] },  // fold all to level 1
+        { "before": ["<leader>","J"], "commands": ["editor.unfoldAll"] },   // unfold all
+        { "before": ["<leader>","x"], "after": ["d","a","w"] },             // delete "a word" under curser
+        { "before": ["<leader>","m"], "after": ["<leader>","<leader>","<leader>","b","d","w"] }, // easymotion to beggining of all words
+        { "before": ["<leader>","f"], "after": ["<leader>","<leader>", "/"] } // easymotion to input character
     ],
     "vim.normalModeKeyBindings": [
-        {
-            "before": ["<leader>","r"],
-            "after": ["v","i","w","<leader>","r"]
-        }, // recursive because it calles the visualModeBind of "leader r"
+        { "before": ["<leader>","r"], "after": ["v","i","w","<leader>","r"] } // recursive because it calles the visualModeBind of "leader r"
     ],
     "vim.visualModeKeyBindingsNonRecursive": [
-        {
-            "before": ["<leader>","r"],
-            "commands": ["editor.action.startFindReplaceAction"]
-        },
-        { // expand selection
-            "before": ["<c-k>"],
-            "after": ["a", "f"]
-        }
+        { "before": ["<leader>","r"], "commands": ["editor.action.startFindReplaceAction"] },
+        { "before": ["<c-k>"], "after": ["a", "f"] }, // expand selection
+        { "before": ["<leader>","s"], "commands": ["git.stageSelectedRanges"] },
     ],
     "vim.insertModeKeyBindingsNonRecursive": [
-        { // add ":" at eol
-            "before": ["<c-m>"],
-            "after": ["<c-o>", "A", ":", "<Enter>"]
-        },
-        { // move left
-            "before": ["<c-h>"],
-            "after": ["<c-o>", "h"]
-        },
-        { // move right
-            "before": ["<c-l>"],
-            "after": ["<c-o>", "l"]
-        },
-        { // add new line above
-            "before": ["<c-k>"],
-            "after": ["<c-o>", "O"]
-        },
-        { // add new line below
-            "before": ["<c-j>"],
-            "after": ["<c-o>", "o"]
-        }
+        { "before": ["<c-m>"], "after": ["<c-o>", "A", ":", "<Enter>"] }, // add ":" at eol
+        { "before": ["<c-h>"], "after": ["<c-o>", "h"] }, // move left
+        { "before": ["<c-l>"], "after": ["<c-o>", "l"] }, // move right
+        { "before": ["<c-k>"], "after": ["<c-o>", "O"] }, // add new line above
+        { "before": ["<c-j>"], "after": ["<c-o>", "o"] } // add new line below
     ],
     "gitlens.codeLens.enabled": false,
     "gitlens.currentLine.enabled": false,
     "gitlens.hovers.currentLine.details": false,
     "editor.suggestSelection": "first",
-    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     "files.exclude": {
         "**/.classpath": true,
         "**/.project": true,
@@ -175,6 +96,17 @@
     "files.trimTrailingWhitespace": true,
     "cSpell.showCommandsInEditorContextMenu": false,
     "cSpell.userWords": [
-        "sbom"
-    ]
+        "sbom",
+        "VDOO"
+    ],
+    "diffEditor.renderSideBySide": false,
+    "todo-tree.general.tags": [
+        "FIXME",
+        "TODO"
+    ],
+    "git.inputValidationSubjectLength": null,
+    "git.inputValidationLength": 72,
+    "security.workspace.trust.enabled": false,
+    "security.workspace.trust.untrustedFiles": "open",
+    "remote.downloadExtensionsLocally": true
 }
