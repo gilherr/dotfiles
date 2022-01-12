@@ -100,11 +100,11 @@ export CLICOLOR=1
 
 # ----------------- Golang ---------------------
 
-# export GOROOT=/usr/local/go
-# export GOPATH=$HOME/golib
+export GOROOT=/usr/local/go
+export GOPATH=$HOME/workspace
 
-# path+=$GOROOT/bin
-# path+=$GOPATH/bin
+path+=$GOROOT/bin
+path+=$GOPATH/bin
 
 # ----------------- Java  ---------------------
 
