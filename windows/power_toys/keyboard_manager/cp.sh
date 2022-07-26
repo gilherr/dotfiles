@@ -1,0 +1,1 @@
+cp /mnt/c/Users/gil.herr/AppData/Local/Microsoft/PowerToys/Keyboard\ Manager/*.json ~/dotfiles/windows/power_toys/keyboard_manager

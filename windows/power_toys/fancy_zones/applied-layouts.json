@@ -1,0 +1,334 @@
+{
+  "applied-layouts": [
+    {
+      "device-id": "SAM0FF0#4\u002621a4dc7c\u00260\u0026UID206395_3840_2160_{79A82D68-0A04-4030-BCC8-FE5E324D39B4}",
+      "applied-layout": {
+        "uuid": "{8A9FC9BA-183D-45FE-BDBF-D166291F1285}",
+        "type": "custom",
+        "show-spacing": false,
+        "spacing": 16,
+        "zone-count": 3,
+        "sensitivity-radius": 20
+      }
+    },
+    {
+      "device-id": "SAM0FF0#4\u002621a4dc7c\u00260\u0026UID206395_3840_2160_{965DB12E-AAE2-4E40-BCD1-4363B8CCD188}",
+      "applied-layout": {
+        "uuid": "{E9A9A41C-0EF4-4456-981F-C3E56756A78D}",
+        "type": "custom",
+        "show-spacing": false,
+        "spacing": 4,
+        "zone-count": 3,
+        "sensitivity-radius": 30
+      }
+    },
+    {
+      "device-id": "SAM0FF1#4\u002621a4dc7c\u00260\u0026UID206395_1920_1080_{965DB12E-AAE2-4E40-BCD1-4363B8CCD188}",
+      "applied-layout": {
+        "uuid": "{6ACCF4BB-53C9-4A3A-9B52-15BC624C7975}",
+        "type": "priority-grid",
+        "show-spacing": true,
+        "spacing": 16,
+        "zone-count": 3,
+        "sensitivity-radius": 20
+      }
+    },
+    {
+      "device-id": "DELA0B9#4\u002621a4dc7c\u00260\u0026UID232987_1920_1080_{965DB12E-AAE2-4E40-BCD1-4363B8CCD188}",
+      "applied-layout": {
+        "uuid": "{0B8288C7-B51A-4934-80C1-54DF3E394213}",
+        "type": "priority-grid",
+        "show-spacing": true,
+        "spacing": 16,
+        "zone-count": 3,
+        "sensitivity-radius": 20
+      }
+    },
+    {
+      "device-id": "GSM0001#4\u002621a4dc7c\u00260\u0026UID206395_3840_2160_{79A82D68-0A04-4030-BCC8-FE5E324D39B4}",
+      "applied-layout": {
+        "uuid": "{87DE4AA8-9D4A-4652-88CB-77F141423CDD}",
+        "type": "priority-grid",
+        "show-spacing": true,
+        "spacing": 16,
+        "zone-count": 3,
+        "sensitivity-radius": 20
+      }
+    },
+    {
+      "device-id": "DELD100#4\u002621a4dc7c\u00260\u0026UID232987_1280_800_{965DB12E-AAE2-4E40-BCD1-4363B8CCD188}",
+      "applied-layout": {
+        "uuid": "{E0861CA9-C821-4623-A095-198B2ADE4696}",
+        "type": "priority-grid",
+        "show-spacing": true,
+        "spacing": 16,
+        "zone-count": 3,
+        "sensitivity-radius": 20
+      }
+    },
+    {
+      "device-id": "SAM0FEE#4\u002621a4dc7c\u00260\u0026UID206395_1920_1080_{965DB12E-AAE2-4E40-BCD1-4363B8CCD188}",
+      "applied-layout": {
+        "uuid": "{F4A14DD6-0EBC-428D-8C71-2E54C7A28A6F}",
+        "type": "priority-grid",
+        "show-spacing": true,
+        "spacing": 16,
+        "zone-count": 3,
+        "sensitivity-radius": 20
+      }
+    },
+    {
+      "device-id": "DELD100#4\u002621a4dc7c\u00260\u0026UID232987_2560_1440_{79A82D68-0A04-4030-BCC8-FE5E324D39B4}",
+      "applied-layout": {
+        "uuid": "{DA892D1C-A5D9-4FCB-AA3D-C23F6ED6F379}",
+        "type": "custom",
+        "show-spacing": false,
+        "spacing": 16,
+        "zone-count": 6,
+        "sensitivity-radius": 15
+      }
+    },
+    {
+      "device-id": "SAM08B4#4\u002621a4dc7c\u00260\u0026UID206395_1920_1080_{79A82D68-0A04-4030-BCC8-FE5E324D39B4}",
+      "applied-layout": {
+        "uuid": "{027C5195-EB38-4658-8E75-25D5FEA995DA}",
+        "type": "priority-grid",
+        "show-spacing": true,
+        "spacing": 16,
+        "zone-count": 3,
+        "sensitivity-radius": 20
+      }
+    },
+    {
+      "device-id": "SAM0FF1#4\u002621a4dc7c\u00260\u0026UID206395_4096_2160_{965DB12E-AAE2-4E40-BCD1-4363B8CCD188}",
+      "applied-layout": {
+        "uuid": "{8A9FC9BA-183D-45FE-BDBF-D166291F1285}",
+        "type": "custom",
+        "show-spacing": false,
+        "spacing": 16,
+        "zone-count": 3,
+        "sensitivity-radius": 20
+      }
+    },
+    {
+      "device-id": "DELA0B9#4\u002621a4dc7c\u00260\u0026UID224795_1920_1200_{79A82D68-0A04-4030-BCC8-FE5E324D39B4}",
+      "applied-layout": {
+        "uuid": "{DA892D1C-A5D9-4FCB-AA3D-C23F6ED6F379}",
+        "type": "custom",
+        "show-spacing": false,
+        "spacing": 16,
+        "zone-count": 6,
+        "sensitivity-radius": 15
+      }
+    },
+    {
+      "device-id": "GSM0001#4\u002621a4dc7c\u00260\u0026UID206395_3840_2160_{965DB12E-AAE2-4E40-BCD1-4363B8CCD188}",
+      "applied-layout": {
+        "uuid": "{20B8B28D-D69E-45B1-AB6F-70A1785B2690}",
+        "type": "priority-grid",
+        "show-spacing": true,
+        "spacing": 16,
+        "zone-count": 3,
+        "sensitivity-radius": 20
+      }
+    },
+    {
+      "device-id": "LOCALDISPLAY_2560_1440_{965DB12E-AAE2-4E40-BCD1-4363B8CCD188}",
+      "applied-layout": {
+        "uuid": "{919C6DCB-292F-4A89-AC62-B0FF4603E168}",
+        "type": "priority-grid",
+        "show-spacing": true,
+        "spacing": 16,
+        "zone-count": 3,
+        "sensitivity-radius": 20
+      }
+    },
+    {
+      "device-id": "DELD100#4\u002621a4dc7c\u00260\u0026UID232987_1920_1080_{965DB12E-AAE2-4E40-BCD1-4363B8CCD188}",
+      "applied-layout": {
+        "uuid": "{38C5368D-371B-4DD5-B3DC-BBD2F1B55F67}",
+        "type": "priority-grid",
+        "show-spacing": true,
+        "spacing": 16,
+        "zone-count": 3,
+        "sensitivity-radius": 20
+      }
+    },
+    {
+      "device-id": "DELA0B9#4\u002621a4dc7c\u00260\u0026UID224795_1920_1080_{965DB12E-AAE2-4E40-BCD1-4363B8CCD188}",
+      "applied-layout": {
+        "uuid": "{B868322F-C01F-4E27-A166-CD7AB4CEE612}",
+        "type": "priority-grid",
+        "show-spacing": true,
+        "spacing": 16,
+        "zone-count": 3,
+        "sensitivity-radius": 20
+      }
+    },
+    {
+      "device-id": "LOCALDISPLAY_1920_1200_{965DB12E-AAE2-4E40-BCD1-4363B8CCD188}",
+      "applied-layout": {
+        "uuid": "{23F7CADD-54A8-47CD-B3F8-C8112A392637}",
+        "type": "priority-grid",
+        "show-spacing": true,
+        "spacing": 16,
+        "zone-count": 3,
+        "sensitivity-radius": 20
+      }
+    },
+    {
+      "device-id": "DELA0B9#4\u002621a4dc7c\u00260\u0026UID232987_1920_1200_{965DB12E-AAE2-4E40-BCD1-4363B8CCD188}",
+      "applied-layout": {
+        "uuid": "{AD6C4EBC-7838-4E28-8083-9BF19682B04E}",
+        "type": "custom",
+        "show-spacing": false,
+        "spacing": 16,
+        "zone-count": 2,
+        "sensitivity-radius": 20
+      }
+    },
+    {
+      "device-id": "LOCALDISPLAY_1920_1080_{965DB12E-AAE2-4E40-BCD1-4363B8CCD188}",
+      "applied-layout": {
+        "uuid": "{6BB7AC81-A6A2-4D6E-AB2C-9DB6F866D6CA}",
+        "type": "priority-grid",
+        "show-spacing": true,
+        "spacing": 16,
+        "zone-count": 3,
+        "sensitivity-radius": 20
+      }
+    },
+    {
+      "device-id": "LEN40A9#4\u002621a4dc7c\u00260\u0026UID265988_1920_1080_{79A82D68-0A04-4030-BCC8-FE5E324D39B4}",
+      "applied-layout": {
+        "uuid": "{00475685-EE0C-4E9A-902D-3FBE8EE965E7}",
+        "type": "custom",
+        "show-spacing": false,
+        "spacing": 16,
+        "zone-count": 2,
+        "sensitivity-radius": 20
+      }
+    },
+    {
+      "device-id": "GSM0001#4\u002621a4dc7c\u00260\u0026UID206395_1920_1080_{79A82D68-0A04-4030-BCC8-FE5E324D39B4}",
+      "applied-layout": {
+        "uuid": "{FE61E8CE-EB84-4627-92AF-D4B4605425D7}",
+        "type": "priority-grid",
+        "show-spacing": true,
+        "spacing": 16,
+        "zone-count": 3,
+        "sensitivity-radius": 20
+      }
+    },
+    {
+      "device-id": "DELA0B9#4\u002621a4dc7c\u00260\u0026UID224795_1920_1200_{965DB12E-AAE2-4E40-BCD1-4363B8CCD188}",
+      "applied-layout": {
+        "uuid": "{D7EA6DB2-A148-4ACA-ABEC-1A6C1E8FC498}",
+        "type": "custom",
+        "show-spacing": false,
+        "spacing": 5,
+        "zone-count": 4,
+        "sensitivity-radius": 20
+      }
+    },
+    {
+      "device-id": "SAM08B4#4\u002621a4dc7c\u00260\u0026UID206395_1920_1080_{965DB12E-AAE2-4E40-BCD1-4363B8CCD188}",
+      "applied-layout": {
+        "uuid": "{00475685-EE0C-4E9A-902D-3FBE8EE965E7}",
+        "type": "custom",
+        "show-spacing": false,
+        "spacing": 16,
+        "zone-count": 2,
+        "sensitivity-radius": 20
+      }
+    },
+    {
+      "device-id": "SAM0FF0#4\u002621a4dc7c\u00260\u0026UID206395_1920_1080_{965DB12E-AAE2-4E40-BCD1-4363B8CCD188}",
+      "applied-layout": {
+        "uuid": "{082215D7-2A8A-4A0B-8266-4B442423433E}",
+        "type": "priority-grid",
+        "show-spacing": true,
+        "spacing": 16,
+        "zone-count": 3,
+        "sensitivity-radius": 20
+      }
+    },
+    {
+      "device-id": "LEN40A9#1\u00268713bca\u00260\u0026UID0_1920_1080_{965DB12E-AAE2-4E40-BCD1-4363B8CCD188}",
+      "applied-layout": {
+        "uuid": "{A83991D7-98A1-415C-A544-D80CD59B6E8F}",
+        "type": "priority-grid",
+        "show-spacing": true,
+        "spacing": 16,
+        "zone-count": 3,
+        "sensitivity-radius": 20
+      }
+    },
+    {
+      "device-id": "DELD100#4\u002621a4dc7c\u00260\u0026UID232987_2560_1440_{965DB12E-AAE2-4E40-BCD1-4363B8CCD188}",
+      "applied-layout": {
+        "uuid": "{DA892D1C-A5D9-4FCB-AA3D-C23F6ED6F379}",
+        "type": "custom",
+        "show-spacing": false,
+        "spacing": 16,
+        "zone-count": 6,
+        "sensitivity-radius": 15
+      }
+    },
+    {
+      "device-id": "LEN40A9#4\u002621a4dc7c\u00260\u0026UID265988_1920_1080_{965DB12E-AAE2-4E40-BCD1-4363B8CCD188}",
+      "applied-layout": {
+        "uuid": "{E9A9A41C-0EF4-4456-981F-C3E56756A78D}",
+        "type": "custom",
+        "show-spacing": false,
+        "spacing": 4,
+        "zone-count": 4,
+        "sensitivity-radius": 30
+      }
+    },
+    {
+      "device-id": "GSM0001#4\u002621a4dc7c\u00260\u0026UID206395_1920_1080_{965DB12E-AAE2-4E40-BCD1-4363B8CCD188}",
+      "applied-layout": {
+        "uuid": "{22A25F8E-3BAF-49BF-8088-9A491CDF0FD1}",
+        "type": "priority-grid",
+        "show-spacing": true,
+        "spacing": 16,
+        "zone-count": 3,
+        "sensitivity-radius": 20
+      }
+    },
+    {
+      "device-id": "SAM0FEE#4\u002621a4dc7c\u00260\u0026UID206395_3840_2160_{965DB12E-AAE2-4E40-BCD1-4363B8CCD188}",
+      "applied-layout": {
+        "uuid": "{8A9FC9BA-183D-45FE-BDBF-D166291F1285}",
+        "type": "custom",
+        "show-spacing": false,
+        "spacing": 16,
+        "zone-count": 6,
+        "sensitivity-radius": 20
+      }
+    },
+    {
+      "device-id": "DELA0DC#4\u002621a4dc7c\u00260\u0026UID206395_1920_1080_{965DB12E-AAE2-4E40-BCD1-4363B8CCD188}",
+      "applied-layout": {
+        "uuid": "{C96DB7D0-FCDD-4B71-99F1-F492571E2DE8}",
+        "type": "priority-grid",
+        "show-spacing": true,
+        "spacing": 16,
+        "zone-count": 3,
+        "sensitivity-radius": 20
+      }
+    },
+    {
+      "device-id": "SAM0FF1#4\u002621a4dc7c\u00260\u0026UID206395_3840_2160_{965DB12E-AAE2-4E40-BCD1-4363B8CCD188}",
+      "applied-layout": {
+        "uuid": "{A786FB05-FC77-4351-B72A-1E8538EB4221}",
+        "type": "priority-grid",
+        "show-spacing": true,
+        "spacing": 16,
+        "zone-count": 3,
+        "sensitivity-radius": 20
+      }
+    }
+  ]
+}
