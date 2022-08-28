@@ -2,6 +2,9 @@
 " Mappings
 " ========
 
+" backspace in Visual mode deletes selection
+vnoremap <BS> d
+
 " Select entire line excluding new lines
 nnoremap <leader>v 0vg_
 
