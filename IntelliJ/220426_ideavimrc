@@ -1,0 +1,134 @@
+" ================ Plugins ===========================
+
+set surround
+set multiple-cursors
+set commentary
+set argtextobj
+set easymotion
+set textobj-entire
+set textobj-indent
+set ReplaceWithRegister
+set exchange
+set ideajoin
+" set NERDTree
+set highlightedyank
+
+" ================ Plugin settings ===========================
+
+let g:argtextobj_pairs="[:],(:),<:>"
+
+" ================ Common settings ===========================
+
+set clipboard=unnamed       " Use system clipboard
+set scrolloff=4
+set showmode
+set incsearch hlsearch
+set ideastatusicon=gray
+set ignorecase smartcase
+set visualbell              " Stops the audible bell
+set noerrorbells
+set clipboard+=ideaput
+
+" mark as bookmark
+" map space o O
+
+" ================ Maps ===========================
+
+"" Update pycharm keymap "Down" and "Up" to Alt+j and Alt+k to move in popup menus
+
+let mapleader=" "
+
+" apply macro from register q
+nnoremap Q @q
+
+" stop highlighting after search
+nnoremap \ :noh<cr>
+
+" tab actions
+nnoremap <leader>q :q<cr>
+" next/prev tab
+nnoremap <leader>k gt
+nnoremap <leader>j gT
+
+" move in insert mode
+inoremap <c-h> <c-o>h
+inoremap <c-j> <c-o>j
+inoremap <c-k> <c-o>k
+inoremap <c-l> <c-o>l
+
+"clear line
+nnoremap <leader>c ^C
+nnoremap <leader>d ^D
+
+
+" add new line below/above and stay in normal mode
+nnoremap <leader>O O<Esc>
+nnoremap <leader>o o<Esc>
+nnoremap <s-cr> O<Esc>
+nnoremap <cr> o<Esc>
+
+" make backspace usable in normal and visual (selection)
+vnoremap <BS> x
+nnoremap <BS> X
+
+" easymotion map
+nmap <Leader>f <Plug>(easymotion-bd-f)
+
+"  self explanatory IntelliJJ actions
+nnoremap <Leader>/ :action Find<CR>
+nnoremap <Leader>r :action RenameElement<CR>
+nnoremap <Leader>s :action SaveAll<CR>
+nnoremap <Leader>b :action FileStructurePopup<CR>
+nnoremap <Leader>z :action Run<CR>
+nnoremap <Leader>nf :action NewFile<CR>
+nnoremap <Leader>t :action ReformatCode<CR>
+nnoremap <Leader>p :action QuickImplementations<CR>
+nnoremap [c :action VcsShowPrevChangeMarker<cr>
+nnoremap ]c :action VcsShowNextChangeMarker<cr>
+
+noremap ga :action GotoAction<CR>
+noremap gd :action GotoDeclaration<CR>
+noremap gb :action GotoDatabaseObject<CR>
+noremap gs :action GotoSymbol<CR>
+noremap gi :action GotoImplementation<CR>
+noremap gf :action GotoFile<CR>
+noremap gh :action CallHierarchy<CR>
+
+" show info+error (like mouse hover)
+nnoremap gm :action ShowErrorDescription<CR>
+
+" expand to level 1 (hide go err handling)
+nnoremap zn :action ExpandAllToLevel1<CR>
+
+" jumplist mapped by default to <C-o> | <C-i>
+
+" nnoremap gc :action JumpToLastChange<CR>
+" nmap <C-o> :action Back<CR>
+nmap <C-o> <Action>(Back)
+nmap <C-i> <Action>(Forward)
+" nnoremap <C-i> :action Forward<CR>
+
+" nnoremap U :action FindUsages<CR>
+" nnoremap R :action RenameElement<CR>
+" "
+"  paste from clipboard history
+" nnoremap <Leader>p :action PasteMultiple<CR>
+" "
+" nnoremap == :action ReformatCode<CR>
+" vnoremap == :action ReformatCode<CR>
+" "
+" inoremap <C-r> <C-o>A
+
+"""  Shift-Select
+nmap <S-Left> <Action>(EditorLeftWithSelection)
+nmap <S-Right> <Action>(EditorRightWithSelection)
+nmap <S-Up> <Action>(EditorUpWithSelection)
+nmap <S-Down> <Action>(EditorDownWithSelection)
+imap <S-Left> <Action>(EditorLeftWithSelection)
+imap <S-Right> <Action>(EditorRightWithSelection)
+imap <S-Up> <Action>(EditorUpWithSelection)
+imap <S-Down> <Action>(EditorDownWithSelection)
+vmap <S-Left> <Action>(EditorLeftWithSelection)
+vmap <S-Right> <Action>(EditorRightWithSelection)
+vmap <S-Up> <Action>(EditorUpWithSelection)
+vmap <S-Down> <Action>(EditorDownWithSelection)
