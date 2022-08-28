@@ -19,6 +19,7 @@ plugins=(
     git
     docker
     docker-compose
+    kubectl
     zsh-autosuggestions
     zsh-syntax-highlighting
 )
@@ -72,12 +73,15 @@ bindkey ''  clear-screen            # ctrl+/
 
 # http://zsh.sourceforge.net/Doc/Release/Zsh-Line-Editor.html
 
-# ---------------------- Sources --------------------------
+# ---------------------- Sources ---------------
 
 source $DOTFILES/zsh/aliases
 source $DOTFILES/env
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-[ -f ~/extra_env ] && source ~/extra_env
+
+# ----------------- fzf  -----------------------
+[ -f ~/.fzf.zsh ] && \
+  source ~/.fzf.zsh && \
+  # source $ZSH_CUSTOM/plugins/fzf-tab-completion/zsh/fzf-zsh-completion.sh \
 
 # ---------------- Path update -----------------
 
@@ -92,11 +96,11 @@ export LESS="$LESS -FRXK"                 # dont be pager when text fit
 unset LSCOLORS
 export CLICOLOR=1
 
-
 # ----------------- NVM ------------------------
 
-# export NVM_DIR="$HOME/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm ]
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # ----------------- Golang ---------------------
 
@@ -106,15 +110,44 @@ export GOPATH=$HOME/workspace
 path+=$GOROOT/bin
 path+=$GOPATH/bin
 
-# ----------------- Java  ---------------------
+# ----------------- Python ---------------------
+
+export PIP_REQUIRE_VIRTUALENV=true
+
+# ----------------- Java  ----------------------
 
 # export JAVA_HOME="/usr/lib/jvm/java-1.11.0-openjdk-amd64"
 
 # ----------------- pycharm  ---------------------
+
 #[[ "$PYCHARM_SHELL" == 1 ]] && source ~/code/threat-landscape/venv/bin/activate
 
-# ----------------- local dev  ---------------------
+# ----------------- bat pager  ---------------------
+
+export BAT_STYLE=plain
+export BAT_PAGER=never
+
+# ----------------- p10k prompt  ---------------------
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+# ----------------- krew (k8s)  ---------------------
+
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+# ----------------- k9s -----------------------------
+
+export K9S_CONFIG=$HOME/.config/k9s
+
+# ----------------- git -----------------------------
+
+export GIT_PAGER=more
+
+# ----------------- work related vars  ---------
+
+[ -f ~/extra_env ] && source ~/extra_env

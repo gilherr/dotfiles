@@ -1,4 +1,5 @@
-alias aliasrc='vi $DOTFILES/alias'
+alias aliasrc='vi $DOTFILES/zsh/aliases'
+alias extraenv='vi $HOME/extra_env'
 
 alias ls='ls --color=tty --group-directories-first'
 alias l='ls -lh'
@@ -11,27 +12,53 @@ alias fzpath='printf "%s\n" $path | fzf'
 alias vi=vim
 alias vimrc='vi ~/.vimrc'
 
-# zsh
-alias zshrc='vi ~/.zshrc'
-
 # Docker
 alias dc='docker-compose'
 alias dv='docker volume ls'
 alias dvrm='docker volume rm $(docker volume ls -q)'
 alias docker-dang='docker rmi $(docker images -f "dangling=true" -q)'
-alias dps='docker ps -a --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"'
+alias dps='docker ps -a --format "table {{.ID}}\t{{.Names}}\t{{.State}}\t{{.RunningFor}}"'
+alias dpps='docker ps -a --format "table {{.ID}}\t{{.Names}}\t{{.State}}\t{{.RunningFor}}\t{{.Ports}}"'
+alias rmdocker='docker rm -f $(docker ps -a -q)'
+alias ctop='docker run --rm -ti --name=ctop --volume /var/run/docker.sock:/var/run/docker.sock:ro quay.io/vektorlab/ctop:latest'
+
+dim() {
+  if [ -z "$1" ]
+    then
+    docker images --format "table {{.ID}}\t{{.Repository}}:{{.Tag}}"
+  else
+    docker images --format "table {{.ID}}\t{{.Repository}}:{{.Tag}}" | grep "$1"
+  fi
+}
 
 # Git
 alias fzgst="git status -s | fzf --no-sort --reverse --preview 'git diff --color=always {+2}'"
 
+
+# zsh
+zshrc() {
+  vi ~/.zshrc
+  exec zsh
+}
+
 # python
-alias py=python
+alias py=python3.10
 
 function pip-install-save {
     for pkg in "$@"
     do
         pip install $pkg && pip freeze | grep -i $pkg >> requirements.txt
     done
+}
+
+# Tar
+untar(){
+  for var in "$@"
+  do
+    echo "$var"
+    tar xvf "$var" --one-top-level
+  done
+
 }
 
 #### random functions ####
@@ -45,3 +72,4 @@ docker-kill(){
 lg() { ls -la | grep $1 -i; }
 
 view-json-log(){ tail -f $1 | jq --unbuffered -r '.timestamp + "\t" + .level + "\t" + .message'  }
+

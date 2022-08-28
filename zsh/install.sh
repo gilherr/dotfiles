@@ -21,6 +21,7 @@ git clone --depth 1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install --all
 
+# TODO install p10k prompt and soft link to its config under /zsh/.p10k.zsh
 
 # add custom zshrc to home
 [ -f "$HOME/.zshrc" ] || [ -L "$HOME/.zshrc" ] && rm "$HOME/.zshrc"
