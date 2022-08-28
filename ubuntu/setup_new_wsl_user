@@ -19,7 +19,7 @@ adduser --gecos "" $USERNAME
 
 # ----- copy above first and enter password then continue ------ #
 
-echo 'Default user will be changed after wsl full restart (with wsl --terminat <distro>)'
+echo 'Default user will be changed after wsl full restart (with wsl --terminate <distro>)'
 adduser $USERNAME sudo
 su $USERNAME
 cd
