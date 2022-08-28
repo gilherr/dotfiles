@@ -1,0 +1,53 @@
+{
+    "xraylogger": {
+        "title": "XRay Format",
+        "description": "Log format used by XRay",
+        "url": "",
+        "regex": {
+            "std" : {
+                "pattern": "(?<timestamp>\\S+) (?<service>\\[[^\\]]*\\]) (?<level>\\[[^\\]]*\\]) (?<trace>\\[[^\\]]*\\]) (?<path>\\[[^\\]]*\\]) (?<module>\\[[^\\]]*\\]) (?<body>.*)"
+            }
+        },
+        "level-field": "level",
+        "timestamp-field" : "timestamp",
+        "level": {
+            "critical": "CRITICAL",
+            "error": "ERROR",
+            "warning": "WARNING",
+            "info": "INFO",
+            "debug": "DEBUG"
+        },
+        "value": {
+            "service": {
+                "kind" : "string",
+                "identifier" : true
+            },
+            "trace": {
+                "kind": "string",
+                "identifier" : true
+            },
+            "path": {
+                "kind": "string"
+            },
+            "module": {
+                "kind": "string"
+            },
+            "body": {
+                "kind": "string"
+            }
+        },
+        "sample": [
+            {
+                "line": "2022-03-08T08:09:42.597Z [jfint] [DEBUG] [6c41c94a969c2e90] [access_join.go:62             ] [main                ] - On permissions affected - received message: type:KEEP_ALIVE [access_client]"
+            },
+            {
+                "line": "2022-03-08T08:09:39.840Z [jfrou] [DEBUG] [33eab26803542e5e] [mtls.go:22                    ] [main                ] - Running mTLS middleware for GET /access/api/v1/topology..."
+            },
+            {
+                "line": "2022-03-08T08:05:37.235Z [jfevt] [DEBUG] [73fcf2265d212d8b] [access_join.go:62             ] [main                ] - Got config update for key:  [access_client]"
+            }
+        ]
+    }
+}
+
+
