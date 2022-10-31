@@ -1,3 +1,4 @@
+alias vigo='vi -u $HOME/.vimrc-go'
 alias aliasrc='vi $DOTFILES/zsh/aliases'
 alias extraenv='vi $HOME/extra_env'
 
@@ -72,4 +73,10 @@ docker-kill(){
 lg() { ls -la | grep $1 -i; }
 
 view-json-log(){ tail -f $1 | jq --unbuffered -r '.timestamp + "\t" + .level + "\t" + .message'  }
+
+cppath(){
+  filePath=$(readlink -f $1)
+  echo $filePath | head -c -1 | clip
+  echo $filePath
+}
 
