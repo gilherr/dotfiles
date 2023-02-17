@@ -3,8 +3,11 @@
 # Update DOTFILES env var
 sed -i "s,export DOTFILES=.*,export DOTFILES=$DOTFILES," $DOTFILES/zsh/zshrc
 
-# install zsh
+# ZSH
 sudo apt install -y zsh
+
+# Oh-my-zsh
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # install oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended

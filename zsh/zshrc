@@ -1,3 +1,6 @@
+### Profiling tool - add "zprof" add the bottom for profile print
+# zmodload zsh/zprof
+
 # ------------ Prevent Ctrl-s Freeze -----------
 stty -ixon
 
@@ -11,7 +14,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 export ZSH=~/.oh-my-zsh
-export DOTFILES=/home/gilh/dotfiles
+export DOTFILES=$HOME/dotfiles
 
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
@@ -21,31 +24,24 @@ plugins=(
     docker-compose
     kubectl
     zsh-autosuggestions
-    zsh-syntax-highlighting
+    fast-syntax-highlighting
+    golang
 )
 source $ZSH/oh-my-zsh.sh
 
 # ---------------------- zsh-autosuggestions --------------------------
 
-#ZSH_AUTOSUGGEST_ACCEPT_WIDGETS=("${(@)ZSH_AUTOSUGGEST_ACCEPT_WIDGETS:#vi-forward-char}")
-#ZSH_AUTOSUGGEST_ACCEPT_WIDGETS=("${(@)ZSH_AUTOSUGGEST_ACCEPT_WIDGETS:#forward-char}")
-#ZSH_AUTOSUGGEST_PARTIAL_ACCEPT_WIDGETS+="forward-char"
-#ZSH_AUTOSUGGEST_PARTIAL_ACCEPT_WIDGETS+="vi-forward-char"
+ZSH_AUTOSUGGEST_ACCEPT_WIDGETS=("${(@)ZSH_AUTOSUGGEST_ACCEPT_WIDGETS:#vi-forward-char}")
+ZSH_AUTOSUGGEST_ACCEPT_WIDGETS=("${(@)ZSH_AUTOSUGGEST_ACCEPT_WIDGETS:#forward-char}")
+ZSH_AUTOSUGGEST_PARTIAL_ACCEPT_WIDGETS+="forward-char"
+ZSH_AUTOSUGGEST_PARTIAL_ACCEPT_WIDGETS+="vi-forward-char"
 
 # ---------------------- Key Bindings --------------------------
 
 bindkey -v                           # make it vim like
 bindkey '^ ' autosuggest-execute     # ctrl+space
-# bindkey '^l' forward-char
-# bindkey '^w' forward-word
-# bindkey '^h' backward-char
-# bindkey '^k' up-line-or-search
-# bindkey '^j' down-line-or-search
-
-bindkey '^x^e' edit-command-line      # ctrl+x,ctrl+e
-bindkey '.'  insert-last-word       # alt+.
-bindkey ''   backward-kill-word     # ctrl+backspace
-bindkey ''  clear-screen            # ctrl+/
+bindkey '^x^e' edit-command-line     # ctrl+x,ctrl+e
+bindkey '.'  insert-last-word      # opt+.
 
 
 # zsh
@@ -73,6 +69,10 @@ bindkey ''  clear-screen            # ctrl+/
 
 # http://zsh.sourceforge.net/Doc/Release/Zsh-Line-Editor.html
 
+# ---------------------- Nvim ------------------
+
+alias vi=nvim
+
 # ---------------------- Sources ---------------
 
 source $DOTFILES/zsh/aliases
@@ -98,13 +98,14 @@ export CLICOLOR=1
 
 # ----------------- NVM ------------------------
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+### NVM takes 80% of zsh loading time
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
 # ----------------- Golang ---------------------
 
-export GOROOT=/usr/local/go
+export GOROOT=/opt/homebrew/Cellar/go/1.19.4/libexec
 export GOPATH=$HOME/workspace
 
 path+=$GOROOT/bin
@@ -112,7 +113,7 @@ path+=$GOPATH/bin
 
 # ----------------- Python ---------------------
 
-export PIP_REQUIRE_VIRTUALENV=true
+# export PIP_REQUIRE_VIRTUALENV=true
 
 # ----------------- Java  ----------------------
 
@@ -136,18 +137,29 @@ export BAT_PAGER=never
 
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-
 # ----------------- k9s -----------------------------
 
 export K9S_CONFIG=$HOME/.config/k9s
 
 # ----------------- git -----------------------------
 
-export GIT_PAGER=more
+export GIT_PAGER=less
 
-# ----------------- work related vars  ---------
+# ----------------- work related vars  --------------
 
 [ -f ~/extra_env ] && source ~/extra_env
+
+# ------------- Iterm2 Shell Integration  -----------
+
+# test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh" || true
+
+# ------------- add gnu execs to PATH (i.e grep) -----------
+
+PATH="$(brew --prefix)/opt/grep/libexec/gnubin:$PATH"
+
+# ----------------- SDK Man  ------------------------
+
+#### THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+# export SDKMAN_DIR="$HOME/.sdkman"
+# [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+

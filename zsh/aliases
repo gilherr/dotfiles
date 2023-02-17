@@ -1,17 +1,20 @@
-alias vigo='vi -u $HOME/.vimrc-go'
-alias aliasrc='vi $DOTFILES/zsh/aliases'
-alias extraenv='vi $HOME/extra_env'
-
-alias ls='ls --color=tty --group-directories-first'
+# alias ls='ls --color=tty --group-directories-first'
 alias l='ls -lh'
 alias ll='ls -lahtr'
 
 # Fuzzy search the path
 alias fzpath='printf "%s\n" $path | fzf'
+alias fzkill='ps x | fzf -m | awk "{print \$1}" | xargs kill'
 
-# Use vim, not vi
+# Kill all running jobs
+alias killalljobs='kill ${${(v)jobstates##*:*:}%=*}'
+
+# Use vim
 alias vi=vim
 alias vimrc='vi ~/.vimrc'
+
+alias aliasrc='vi $DOTFILES/zsh/aliases'
+alias extraenv='vi $HOME/extra_env'
 
 # Docker
 alias dc='docker-compose'
@@ -22,16 +25,19 @@ alias dps='docker ps -a --format "table {{.ID}}\t{{.Names}}\t{{.State}}\t{{.Runn
 alias dpps='docker ps -a --format "table {{.ID}}\t{{.Names}}\t{{.State}}\t{{.RunningFor}}\t{{.Ports}}"'
 alias rmdocker='docker rm -f $(docker ps -a -q)'
 alias ctop='docker run --rm -ti --name=ctop --volume /var/run/docker.sock:/var/run/docker.sock:ro quay.io/vektorlab/ctop:latest'
+alias diewhale='pkill Docker && sleep 5 && open /Applications/Docker.app'
+
+# Mac clipboard
+alias cpb='pbcopy'
 
 dim() {
   if [ -z "$1" ]
     then
     docker images --format "table {{.ID}}\t{{.Repository}}:{{.Tag}}"
   else
-    docker images --format "table {{.ID}}\t{{.Repository}}:{{.Tag}}" | grep "$1"
+    docker images --format "table {{.ID}}\t{{.Repository}}:{{.Tag}}" | grep -i "$1"
   fi
 }
-
 # Git
 alias fzgst="git status -s | fzf --no-sort --reverse --preview 'git diff --color=always {+2}'"
 
@@ -80,3 +86,15 @@ cppath(){
   echo $filePath
 }
 
+dtp (){
+    docker tag $1 $2
+    docker push $2
+}
+
+err2std(){
+    echo "2&>1"
+}
+
+awkf() {
+    awk "{ print \$$1}"
+}
