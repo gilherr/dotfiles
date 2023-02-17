@@ -2,7 +2,7 @@ export EDITOR=vim
 export VISUAL=vim
 
 FZF_DEFAULT_COMMAND='fd --hidden --exclude .git ""'
-FZF_DEFAULT_OPTS='--height 90% --layout=reverse'
+FZF_DEFAULT_OPTS='--height 20 --layout=reverse'
 
 FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 FZF_CTRL_T_OPTS='--preview "bat --style=numbers --color=always --line-range :100 {}"'
