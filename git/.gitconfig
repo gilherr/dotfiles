@@ -1,0 +1,7 @@
+[user]
+	name = Gil Herr
+	email = gilherr@gmail.com
+[push]
+	autoSetupRemote = true
+[rebase]
+	autosquash = true
