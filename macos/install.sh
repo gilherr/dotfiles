@@ -14,6 +14,11 @@ formulae=(
     telnet
     go@1.19
     coreutils   # https://formulae.brew.sh/formula/coreutils
+    helm
+    git-lfs
+    libmagic
+    libpq       # Postgres C API library (psql, pg_dump, etc..) add to path using PATH="$(brew --prefix)/opt/homebrew/opt/libpq/bin:$PATH"
+    # golangci-lint  # go linter
     # fd
     # macvim
 )
@@ -26,6 +31,8 @@ casks=(
     --cask sdm
     --cask lens
     --cask jetbrains-toolbox
+    # --cask burp-suite             # Web security testing toolkit
+    # --cask obsidian               # Knowledge base that works on top of a local folder of plain text Markdown files
     # --cask alt-tab                # Enable Windows-like alt-tab
     # --cask spotify                # Music streaming service
     # --cask alfred                 # Application launcher and productivity software
@@ -37,6 +44,7 @@ casks=(
     # --cask unnaturalscrollwheels  # fix mouse scroll direction
     # --cask logseq                 # Note taking tool
     # --cask easy-move-plus-resize  # Move and resize windows using a modifier key and mouse drag
+    # --cask rectangle              # Window manager (snap windows)
 )
 
 brew install "${casks[@]}"
@@ -76,8 +84,8 @@ git config --global --add --bool push.autoSetupRemote true
 # https://github.com/docker/for-mac/issues/6472#issuecomment-1236883870
 alias diewhale='pkill Docker && sleep 5 && open /Applications/Docker.app'
 
-## Move window with ctrl+cmd+click (https://apple.stackexchange.com/a/365860)
-# defaults write -g NSWindowShouldDragOnGesture -bool true 
-# To turn off:
-# defaults delete -g NSWindowShouldDragOnGesture
+## Okta plugin shortcut not working
+# go to chrome://extensions/shortcuts and re enter the shortcut
 
+## Use shift for uppercase when writing hebrew
+# Go to settings -> keyboard layout. Remove "Hebrew" and add "Hebrew - PC"
