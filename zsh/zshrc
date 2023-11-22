@@ -73,10 +73,6 @@ bindkey '.'  insert-last-word      # opt+.
 
 alias vi=nvim
 
-# ---------------------- Sources ---------------
-
-source $DOTFILES/zsh/aliases
-source $DOTFILES/env
 
 # ----------------- fzf  -----------------------
 [ -f ~/.fzf.zsh ] && \
@@ -105,11 +101,13 @@ export CLICOLOR=1
 
 # ----------------- Golang ---------------------
 
-export GOROOT=/opt/homebrew/Cellar/go/1.19.4/libexec
+export GOROOT=/opt/homebrew/opt/go/libexec
 export GOPATH=$HOME/workspace
 
 path+=$GOROOT/bin
 path+=$GOPATH/bin
+
+alias mygodoc='godoc -index -links -maxresults 500 -http :10000'
 
 # ----------------- Python ---------------------
 
@@ -144,6 +142,7 @@ export K9S_CONFIG=$HOME/.config/k9s
 # ----------------- git -----------------------------
 
 export GIT_PAGER=less
+export GIT_LFS_SKIP_SMUDGE=1
 
 # ----------------- work related vars  --------------
 
@@ -162,4 +161,10 @@ PATH="$(brew --prefix)/opt/grep/libexec/gnubin:$PATH"
 #### THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 # export SDKMAN_DIR="$HOME/.sdkman"
 # [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+
+# ---------------------- Sources ---------------
+
+source $DOTFILES/zsh/aliases
+source $DOTFILES/env
 

@@ -26,20 +26,41 @@ alias dpps='docker ps -a --format "table {{.ID}}\t{{.Names}}\t{{.State}}\t{{.Run
 alias rmdocker='docker rm -f $(docker ps -a -q)'
 alias ctop='docker run --rm -ti --name=ctop --volume /var/run/docker.sock:/var/run/docker.sock:ro quay.io/vektorlab/ctop:latest'
 alias diewhale='pkill Docker && sleep 5 && open /Applications/Docker.app'
+## remove dependent children
+alias drmi-children='docker rmi $(docker inspect --format="{{.Id}} {{.Parent}}" $(docker images -q) | grep " sha256" | cut -d " " -f1)'
 
-# Mac clipboard
-alias cpb='pbcopy'
+putag(){docker pull "$1" && docker tag "$1" "$2"}
+
+drmi(){
+    docker images --format "table {{.ID}}\t{{.Repository}}:{{.Tag}}" | grep "$1" | cut -d " " -f 1 | xargs docker rmi -f
+}
+
+function fzdrmi() {
+  docker images | sed 1d | fzf -q "$1" --no-sort -m --tac | awk '{ print $3 }' | xargs -r docker rmi -f
+}
+
+function fzdrm() {
+  docker ps -a | sed 1d | fzf -q "$1" --no-sort -m --tac | awk '{ print $1 }' | xargs -r docker rm
+}
 
 dim() {
   if [ -z "$1" ]
     then
-    docker images --format "table {{.ID}}\t{{.Repository}}:{{.Tag}}"
+    docker images --format "table {{.ID}}\t{{.Size}}\t{{.Repository}}:{{.Tag}}"
   else
-    docker images --format "table {{.ID}}\t{{.Repository}}:{{.Tag}}" | grep -i "$1"
+    docker images --format "table {{.ID}}\t{{.Size}}\t{{.Repository}}:{{.Tag}}" | grep -i "$1"
   fi
 }
+
+# Mac clipboard
+alias cpb='pbcopy'
+
+
 # Git
 alias fzgst="git status -s | fzf --no-sort --reverse --preview 'git diff --color=always {+2}'"
+alias fzgco="git branch | fzf | xargs git checkout"
+alias git_remove_merged="git branch --merged | grep -v master | xargs git branch -D"
+alias gst="git status -s"
 
 
 # zsh
@@ -48,15 +69,14 @@ zshrc() {
   exec zsh
 }
 
-# python
-alias py=python3.10
-
 function pip-install-save {
     for pkg in "$@"
     do
         pip install $pkg && pip freeze | grep -i $pkg >> requirements.txt
     done
 }
+
+alias pbnewline="pbpaste | sed 's/\\\n/\n/g'"
 
 # Tar
 untar(){
