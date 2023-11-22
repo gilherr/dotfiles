@@ -53,9 +53,6 @@ nnoremap <s-h> gT
 nnoremap <leader><leader>c ^C
 nnoremap <leader>D ^D
 
-nnoremap <leader>c ciw
-nnoremap <leader>C ciW
-
 
 " add new line below/above and stay in normal mode
 nnoremap <leader>O O<Esc>
@@ -113,9 +110,21 @@ nmap <C-i> <Action>(Forward)
 nmap <M-i> <Action>(Forward)
 nmap <M-o> <Action>(Back)
 
-" copy/cut inner word
+" All inner word actions
 nnoremap <leader>y yiw
+nnoremap <leader>Y yiW
+
 nnoremap <leader>d diw
+nnoremap <leader>D diW
+
+nnoremap <leader>c ciw
+nnoremap <leader>C ciW
+
+map <leader>g griw
+map <leader>G griW
+
+map <leader>x cxiw
+map <leader>X cxiW
 
 """  Shift-Select
 nmap <S-Left> <Action>(EditorLeftWithSelection)
@@ -131,3 +140,5 @@ vmap <S-Right> <Action>(EditorRightWithSelection)
 vmap <S-Up> <Action>(EditorUpWithSelection)
 vmap <S-Down> <Action>(EditorDownWithSelection)
 
+
+""" to get all action, run :actionlist
