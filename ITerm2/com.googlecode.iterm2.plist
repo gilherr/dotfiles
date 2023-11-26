@@ -733,6 +733,8 @@
 				<dict>
 					<key>action</key>
 					<string>iTermUserNotificationTrigger</string>
+					<key>disabled</key>
+					<true/>
 					<key>parameter</key>
 					<string>GC Done</string>
 					<key>regex</key>
