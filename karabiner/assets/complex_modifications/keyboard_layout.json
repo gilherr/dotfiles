@@ -2,7 +2,7 @@
     "title": "Keyboard Layout Switch",
     "rules": [
         {
-            "description": "left_option+1 to Change input lang to English.",
+            "description": "left_option+1 to Change input lang to UnicodeHexInput.",
             "manipulators": [
                 {
                     "type": "basic",
@@ -17,7 +17,7 @@
                     "to": [
                         {
                             "select_input_source": {
-                                "language": "en"
+                                "input_source_id": "com.apple.keylayout.UnicodeHexInput"
                             }
                         }
                     ]
@@ -41,6 +41,65 @@
                         {
                             "select_input_source": {
                                 "language": "he"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description": "left_option+3 to Change input lang to English.",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "3",
+                        "modifiers": {
+                            "mandatory": [
+                                "left_option"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "select_input_source": {
+                                "language": "en"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description": "WIP holding left_option will change to hebrew",
+            "comment": "this ruins the opt+1 and opt+2 to change layout manually. https://github.com/pqrs-org/Karabiner-Elements/issues/1667",
+            "comment2": "to_delayed_action: { to_if_canceled: [ { key_code: left_optione } ] },",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "left_option",
+                        "modifiers": {
+                            "optional": [
+                                "any"
+                            ]
+                        }
+                    },
+                    "parameters": {
+                        "basic.to_if_alone_timeout_milliseconds": 250,
+                        "basic.to_if_held_down_threshold_milliseconds": 250
+                    },
+                    "to_if_held_down": [
+                        {
+                            "select_input_source": {
+                                "language": "he"
+                            }
+                        }
+                    ],
+                    "to_after_key_up": [
+                        {
+                            "select_input_source": {
+                                "language": "en"
                             }
                         }
                     ]
