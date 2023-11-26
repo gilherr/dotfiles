@@ -89,3 +89,6 @@ alias diewhale='pkill Docker && sleep 5 && open /Applications/Docker.app'
 
 ## Use shift for uppercase when writing hebrew
 # Go to settings -> keyboard layout. Remove "Hebrew" and add "Hebrew - PC"
+
+## Change your keyboard layout from EN to UnicodeHexInput to release the 
+## options key to act more like ALT
