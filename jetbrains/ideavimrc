@@ -1,3 +1,8 @@
+" General notes
+" ----------------------------------------------------
+" - To print all builtin actions, run :actionlist
+" - To use the option key on macos, you need to change your keyboard layout to "UnicodeHexInput"
+
 " ================ Plugins ===========================
 
 set surround
@@ -48,6 +53,18 @@ nnoremap <leader>q :q<cr>
 " next/prev tab
 nnoremap <s-l> gt
 nnoremap <s-h> gT
+
+" move cursors between open tabs
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
+nnoremap <c-k> <c-w>k
+nnoremap <c-j> <c-w>j
+
+" split and move
+nnoremap <a-l> :action MoveTabRight<CR>
+nnoremap <a-h> :action Unsplit<CR>
+nnoremap <a-j> :action MoveTabDown<CR>
+
 
 "clear line
 nnoremap <leader><leader>c ^C
@@ -140,5 +157,3 @@ vmap <S-Right> <Action>(EditorRightWithSelection)
 vmap <S-Up> <Action>(EditorUpWithSelection)
 vmap <S-Down> <Action>(EditorDownWithSelection)
 
-
-""" to get all action, run :actionlist
