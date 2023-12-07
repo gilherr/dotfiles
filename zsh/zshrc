@@ -26,8 +26,16 @@ plugins=(
     zsh-autosuggestions
     fast-syntax-highlighting
     golang
+    vi-mode
 )
 source $ZSH/oh-my-zsh.sh
+
+# ---------------------- vi-mode --------------------------------------
+
+VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
+VI_MODE_SET_CURSOR=true
+# Make Vi mode transitions faster (KEYTIMEOUT is in hundredths of a second)
+KEYTIMEOUT=1
 
 # ---------------------- zsh-autosuggestions --------------------------
 
@@ -38,7 +46,6 @@ ZSH_AUTOSUGGEST_PARTIAL_ACCEPT_WIDGETS+="vi-forward-char"
 
 # ---------------------- Key Bindings --------------------------
 
-bindkey -v                           # make it vim like
 bindkey '^ ' autosuggest-execute     # ctrl+space
 bindkey '^x^e' edit-command-line     # ctrl+x,ctrl+e
 bindkey '.'  insert-last-word      # opt+.

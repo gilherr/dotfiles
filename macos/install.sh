@@ -73,6 +73,7 @@ defaults write -g ApplePressAndHoldEnabled -bool false
 ## Git
 ### avoid running "--set-upstream" when creating new branches
 git config --global --add --bool push.autoSetupRemote true 
+git config --global core.excludesFile '~/.gitignore'
 
 ## Iterm option+. to insert-last-word
 # https://superuser.com/a/1166260
