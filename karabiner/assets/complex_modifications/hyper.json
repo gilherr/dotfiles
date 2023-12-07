@@ -2,7 +2,7 @@
   "title": "Hyper",
   "rules": [
     {
-      "description": "Hyper = CAPS_LOCK = SHIFT+COMMAND+OPTION+CONTROL or ESCAPE (If Alone)",
+      "description": "Hyper = CAPS_LOCK = (⌃⌥⇧⌘) or ESCAPE (If Alone)",
       "manipulators": [
         {
           "from": {
@@ -77,6 +77,99 @@
           },
           "to": [],
           "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "Hyper + h/j/k/l to Arrows",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "j",
+            "modifiers": {
+              "mandatory": [
+                "left_shift",
+                "left_command",
+                "left_control",
+                "left_option"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "down_arrow"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "k",
+            "modifiers": {
+              "mandatory": [
+                "left_shift",
+                "left_command",
+                "left_control",
+                "left_option"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "up_arrow"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "h",
+            "modifiers": {
+              "mandatory": [
+                "left_shift",
+                "left_command",
+                "left_control",
+                "left_option"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "left_arrow"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "l",
+            "modifiers": {
+              "mandatory": [
+                "left_shift",
+                "left_command",
+                "left_control",
+                "left_option"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "right_arrow"
+            }
+          ]
         }
       ]
     },
@@ -187,7 +280,7 @@
       "manipulators": [
         {
           "from": {
-            "key_code": "grave_accent_and_tilde",
+            "key_code": "non_us_backslash",
             "modifiers": {
               "mandatory": [
                 "left_shift",

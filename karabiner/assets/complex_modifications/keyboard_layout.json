@@ -154,6 +154,76 @@
             ]
         },
         {
+            "description": "Double tap left_shift for English (Buggy - variable doesnt reset)",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "l-shift",
+                            "value": 1
+                        }
+                    ],
+                    "from": {
+                        "key_code": "left_shift",
+                        "modifiers": {
+                            "optional": [
+                                "caps_lock"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "n"
+                          }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "left_shift",
+                        "modifiers": {
+                            "optional": [
+                                "caps_lock"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "left_shift"
+                        }
+                    ],
+                    "to_if_alone": [
+                        {
+                            "set_variable": {
+                                "name": "l-shift",
+                                "value": 1
+                            }
+                        }
+                    ],
+                    "to_delayed_action": {
+                        "to_if_invoked": [
+                            {
+                                "set_variable": {
+                                    "name": "l-shift",
+                                    "value": 0
+                                }
+                            }
+                        ],
+                        "to_if_canceled": [
+                            {
+                                "set_variable": {
+                                    "name": "l-shift",
+                                    "value": 0
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
             "description": "left_option alone to toggle Hebrew to English input.",
             "manipulators": [
                 {
